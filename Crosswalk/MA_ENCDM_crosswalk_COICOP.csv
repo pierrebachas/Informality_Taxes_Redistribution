@@ -1,0 +1,1659 @@
+Code;Label
+0A;FOOD – BEVERAGES AND TOBACCO               
+1;FOOD – BEVERAGES AND TOBACCO               
+01;CEREALS AND CEREAL-BASED PRODUCTS                
+011;Unprocessed cereals (in seeds)                
+0111;Durum wheat                  
+0112;Tender wheat                  
+0113;Barley                   
+0114;Maize (corn)                  
+0115;Rice                   
+0116;Rye                   
+0117;Sorghum (big-grained millet)                 
+0118;Unprocessed cereals nec                 
+0119;Unprocessed cereals nos                 
+012;Purchased bread (round and long bread)              
+0121;Durum wheat bread                 
+0122;Tender wheat bread                 
+0123;Barley bread                  
+0124;Maize bread                  
+0125;Rye-bread                   
+0128;Bread nec                  
+0129;Bread nos                  
+013;Flour                   
+0131;Durum wheat flour                 
+0132;Tender wheat first quality flour               
+0133;Tender wheat domestic flour                
+0134;Barley flour                  
+0135;Maize flour                  
+0136;Sorghum flour                  
+0137;Rye flour                  
+0138;Flour nec (rice flour…)                
+0139;Flour nos                  
+014;Semolina                   
+0141;Hard wheat semolina                 
+0142;Tender wheat semolina                 
+0143;Barley semolina (tchicha)                 
+0144;Maize semolina                  
+0145;Rye semolina                  
+0148;Semolina nec                  
+0149;Semolina nos                  
+015;Couscous                   
+0151;Durum wheat couscous                 
+0152;Tender wheat couscous                 
+0153;Barley couscous                  
+0154;Maize couscous                  
+0158;Couscous nec                  
+0159;Couscous nos                  
+016;Food pasta                  
+0161;Noodle and vermicelli                 
+0162;Spaghetti                   
+0163;Macaroni                   
+0164;M’hamssa                   
+0168;Food pasta nec (tagliatelle…)                
+0169;Food pasta nos                 
+017;Other cereal products                 
+0171;Rusks (including toasted bread)                
+0172;Biscuits and other dry cookies (including butter cookies, wafers…)           
+0173;Croissants, brioches and assimilated products (bread rolls, chocolat filled rolls, currant buns…)        
+0174;Fresh pastry (cream cakes, pies, mille-feuilles…)              
+0175;Donuts                   
+0176;Chebbakia and assimilated products (briouats, bastilla, mehhancha…)             
+0177;Pancakes (rghaïf, baghrir…) and assimilated products              
+0178;Cornflakes and assimilated breakfast products               
+0179;Other cereal products (sfouf, zemita, sellou…)              
+018;Cereal products for infants and babies (under 2)            
+0181;Lacteal flour                  
+0182;Non lacteal flour                 
+0183;Dietetic food and infant/baby food               
+0188;Flour for infants and babies nec              
+0189;Cereal products for infants and babies nos             
+019;Pastry based dishes                 
+0191;Pizza                   
+0192;Pancakes                   
+0199;Other pastry-based dishes mixed with other products             
+02;MILK, DAIRY PRODUCTS AND EGGS               
+021;Fresh unprocessed bulk milk                
+0211;Fresh cow milk                 
+0212;Fresh goat milk                 
+0213;Fresh ewe milk                 
+0214;Fresh she-camel milk                 
+0215;Fresh milk nec                 
+0216;Fresh milk nos                 
+022;Long shelf life pasteurized milk               
+0221;Pasteurized milk                  
+0222;Long shelf life pasteurized milk               
+023;Condensed milk                  
+0231;Sweet condensed milk                 
+0232;Unsweetened condensed milk                 
+0239;Condensed milk nos                 
+024;Powder milk (excluding special baby milks)              
+0241;Sweet powder milk                 
+0242;Unsweetened powder milk nos                
+025;Whey                   
+0251;Packed whey                  
+0252;Bulk whey                  
+0258;Whey nec                  
+0259;Whey nos                  
+026;Cheese                   
+0261;Melted cheeses spread (La vache qui rit, Kiri, La belle vache…)         
+0262;Semi-hard cheeses (gruyère, babybel…)                
+0263;White or soft cheeses –goat cheese, jbene…             
+0269;Cheese nos                  
+027;Other dairy products                 
+0271;Cottage cheese                  
+0272;Yogurts and raibi                 
+0273;Fresh cream, Chantilly cream, custard creeam              
+0279;Other dairy products (milk chocolate…)               
+028;Milk and dairy products for infants and babies (under 2)          
+0281;Milk and dairy products for infants and babies (special milks for babies)        
+029;Eggs                   
+0291;Fresh chicken eggs                 
+0292;Fresh other birds eggs                
+0293;Baked eggs bought outside and consumed at home            
+0299;Eggs nos                  
+03;BODY FAT                  
+031;Butter                   
+0311;Natural butter (zebda beldia)                
+0312;Pasteurized animal butter                 
+0313;Smen (off butter)                 
+0314;Vegetal butter (astra, margarine, rama, familia, prairie…)             
+0319;Butter nos                  
+032;Edible oil                  
+0321;Packed edible oil                 
+0322;Bulk edible oil                 
+0323;Packed olive oil                 
+0324;Bulk olive oil                 
+0325;Argane oil                  
+0328;Oil nec                  
+0329;Oil nos                  
+033;Other body fat                 
+0331;Animal fat                  
+0339;Other body fat                 
+04;MEATS AND POULTRIES                 
+041;Beef and veal meat (including ground meat)             
+0411;Deboned beef meat                 
+0412;Ground beef meat                 
+0413;Boned beef meat                 
+0414;Frozen beef meat                 
+0415;Beef meat nos                 
+042;Lamb or sheep meat (including ground meat)             
+0421;Sheep or lamb meat                
+0422;Ground sheep meat                 
+0429;Sheep meat nos                 
+043;Other butchery meats (including ground meat)              
+0431;Goat meat                  
+0432;Camel meat                  
+0433;Horse meat                  
+0434;Camel ground meat                 
+0435;Horse ground meat                 
+0436;Meat products prepared outside and consumed at home            
+0438;Other animals meat and ground meat              
+0439;Meat and ground meat nos               
+044;Live animals                  
+0441;Live beefs and veals                
+0442;Live sheep                  
+0443;Live goats                  
+0444;Live animals bought at Eid El Adha             
+0449;Other live animals (swine…) nos               
+045;Tripes                   
+0451;Heads                   
+0452;Legs                   
+0453;Heart and liver                 
+0454;Brain                   
+0455;Tripes                   
+0456;Offal and giblets                 
+0459;Other offal and giblets (spleen, kidney, tongue…)             
+046;Baked meats                  
+0461;Fresh sausages, cooked or smoked               
+0462;Immediately consumable dried or baked sausages (mortadella…)             
+0463;Dried meats (kadid)                 
+0464;Pork ham                  
+0465;Canned meat                  
+0466;Khalii (cured meat)                 
+0468;Dried and canned meats nec               
+0469;Dried and canned meats nos               
+047;Poultry, rabbit and game raw meats (including frozen)            
+0471;Featherless commercial-bred retailed chicken                
+0472;Farm-bred chicken                  
+0473;Other poultry (pigeons, turkeys, ducks…)               
+0474;Rabbits                   
+0475;Game (hares, partridges…)                 
+0476;Roasted chicken bought outside and consumed at home            
+0477;Chicken pieces (liver, legs…)                
+048;Live poultry, rabbit and game               
+0481;Live industrial chicken                 
+0482;Live farm chicken                 
+0483;Other live poultry (pigeons, turkeys, ducks)              
+0484;Live rabbits                  
+0485;Live game (hares, partridges, wild boars, hedges…)             
+049;Other edible animals                 
+0491;Snails                   
+0499;Other edible animals                 
+05;FISH                   
+051;Fresh fish                  
+0511;Sardines                   
+0512;Horse mackerel                  
+0513;Red sea bream                 
+0514;Whiting and hake                 
+0515;Anchovies                   
+0516;Tuna                   
+0517;Sole                   
+0518;Fish nec (mackerel, fresh fish eggs…)              
+0519;Fish nos                  
+052;Fresh crustaceans and aquatic invertebrates (or seafood)             
+0521;Crustaceans (shrimps, crayfish, lobster)                
+0522;Aquatic invertebrates (mussels and oysters)               
+0523;Crustaceans and invertebrates mix                
+053;Canned fish                  
+0531;Canned sardines (oil, tomato…)                
+0532;Canned tuna (oil, tomato…)                
+0533;Other canned fish                 
+0534;Canned invertebrates and crustaceans                
+0535;Salted, dried or smoked fish               
+0539;Canned fish s.a.i                 
+054;Frozen or deep-frozen fish                
+0541;Horse mackerel                  
+0542;Red sea bream                 
+0543;Whiting and hake                 
+0545;Anchovies                   
+0546;Crustaceans (shrimps, crayfish, lobster…)                
+0547;Invertebrates                   
+0548;Other frozen or deep-frozen fish               
+0549;Frozen or deep-frozen fish nos               
+055;Take away fish                 
+0551;Take away fish                 
+0552;Take away fish dishes                
+06;FRESH VEGETABLES                  
+061;Fresh leguminous vegetables                 
+0611;Fresh broad beans                 
+0612;Fresh peas                  
+0613;Fresh French or string beans               
+0619;Other fresh leguminous vegetables                
+062;Tomato                   
+0621;Tomato                   
+063;Potato                   
+0631;Potato                   
+064;Edible roots and tubers (excluding potaoes)              
+0641;Sweet potatoes                  
+0642;Kasbias                   
+0643;Radish                   
+0644;Onions                   
+0645;Carrots                   
+0646;Turnips                   
+0647;Red beetroot                  
+0649;Other edible roots and tubers               
+065;Vegetables and culinary herbs                
+0651;Leeks                   
+0652;Parsley and coriander                 
+0653;Celery                   
+0654;Beet                   
+0655;Mallow                   
+0656;Cabbage and cauliflower                 
+0657;Sedge                   
+0658;Artichoke and chards                 
+0659;Other vegetable and culinary herbs (asparagus, spinach…)             
+066;Vegetables cultivated for their fruit               
+0661;Eggplant                   
+0662;Quince                   
+0663;Squash, zucchini (slawi)                 
+0664;Pumpkin                   
+0665;Cucumber and gherkin                 
+0666;Sweet and hot pepper                
+0667;Greek cusp                  
+0669;Other vegetables cultivated for their fruit              
+067;Fresh vegetables mix                 
+0671;Fresh vegetable mix                 
+068;Take away soups                 
+0681;Soup (harira), broth, bissara                
+07;DRY OR CANNED VEGETABLES                
+071;Dry leguminous vegetables                 
+0711;Dry broad beans                 
+0712;Chick peas                  
+0713;Dry beans                  
+0714;Lentils                   
+0715;Dry peas                  
+0716;Fenugreek                   
+0719;Other dry leguminous                 
+072;Dried vegetables                  
+0721;Dried onions                  
+0722;Garlic                   
+0729;Other dried vegetables                 
+073;Canned vegetables or leguminous                
+0731;Canned tomato                  
+0732;Canned peas                  
+0733;Canned beans                  
+0734;Canned mixed vegetables                 
+0735;Canned mushrooms                  
+0736;Sour vegetables                  
+0737;Gherkins in vinegar                 
+0738;Canned corn                  
+0739;Other canned vegetables                 
+074;Olives                   
+0741;Black olives                  
+0742;Whole green olives                 
+0743;Deboned green olives                 
+0744;Olive mix                  
+0745;Olives and vegetables sour pickles, olives and hot peppers pickles          
+0749;Olives nos                  
+075;Processed potatoes                  
+0751;Dehydrated potatoes                  
+0752;Deep-frozen processed potatoes                 
+0753;Chips                   
+0759;Other dehydrated vegetables                 
+076;Deep-frozen vegetables                  
+0761;Deep-frozen peas                  
+0762;Deep-frozen spinach                  
+0763;Deep-frozen string beans                 
+0764;Deep-frozen cabbage (brocoli, Brussel sprouts…)               
+0765;Deep-frozen artichokes                  
+0766;Deep-frozen mushrooms                  
+0767;Deep-frozen mixed vegetables                 
+0769;Other deep-frozen vegetables                 
+08;FRUIT                   
+081;Citrus fruit                  
+0811;Oranges                   
+0812;Tangerines, clementines                  
+0813;Lemons                   
+0814;Grapefruit                   
+0815;Other citrus fruit                 
+082;Fresh fruit with seeds                
+0821;Grapes                   
+0822;Apples                   
+0823;Pears                   
+0824;Melons                   
+0825;Watermelons                   
+0826;Fresh figs                  
+0827;Prickle pears                  
+0828;Grenades                   
+0829;Other fresh fruits with seeds (strawberries…)              
+083;Stone fruit                  
+0831;Apricots                   
+0832;Plums                   
+0833;Peaches                   
+0834;Mediars                   
+0835;Cherries                   
+0836;Nectarines                   
+0839;Other stone fruit                 
+084;Dried fruit                  
+0841;Dried figs                  
+0842;Raisins or currants                 
+0843;Prunes                   
+0844;Dates                   
+0845;Acorns and chestnuts                 
+0846;Carob (kharroub)                  
+0847;Jujube                   
+0849;Other dried fruit                 
+085;Oleaginous fruit                  
+0851;Shelled nuts                  
+0852;Unsehelled nuts                  
+0853;Shelled almonds                  
+0854;Unshell almonds                  
+0855;Shelled groundnuts or peanuts                
+0856;Unshelled groundnuts or peanuts                
+0859;Sunflower seeds, squash seeds and other oleaginous fruit seeds           
+086;Tropical fruit                  
+0861;Bananas                   
+0862;Coconuts                   
+0863;Pineapples                   
+0864;Kiwis                   
+0865;Avocados                   
+0869;Other tropical fruit                 
+087;Processed fruit                  
+0871;Fruit in syrup, mixed fruits, fruit salad             
+0872;Jams and marmalades                 
+0873;Frozen fruits                  
+0879;Other processed fruits                 
+088;Fruit mix                  
+0881;Fruit mix                  
+09;SUGAR, SWEET PRODUCTS, CHOCOLATE PRODUCTS AND PRODUCTS FOR DESSERTS AND PASTRY         
+091;Sugar                   
+0911;Loaf-sugar                   
+0912;Pieced sugar                  
+0913;Powdered sugar                  
+0919;Sugar nos                  
+092;Honey                   
+0921;Natural honey                  
+0922;Industrial honey                  
+0929;Honey nos                  
+093;Confectionery, candies and chocolate                
+0931;Confectionery and sweets                 
+0932;Chocolate                   
+0933;Powder cocoa                  
+0934;Sweeteners                   
+0935;Ice-creams, ice lollies and popsicles               
+0939;Other assimilated products                 
+10;CHOCOLATE PRODUCTS FOR BREAKFAST, PRODUCTS FOR DESSERTS AND PASTRY           
+101;Chocolate products for breakfasts                
+1011;Pure cocoa, sweet cocoa, instant or non instant chocolate and assimilated products        
+102;Products for desserts and pastry               
+1021;Mix for custard pies and creams              
+1022;Vanilla and flavourings for desserts and pastries             
+1023;Candied fruits, fruit paste                
+1024;Icing sugar, vanilla sugar                
+1025;Other assimilated products                 
+11;TEA, COFFEE AND INFUSING HERBS               
+111;Tea                   
+1111;Green leave tea                  
+1112;Black tea                  
+1119;Tea nos                  
+112;Coffee                   
+1121;Whole and ground coffee                
+1122;Normal or decaffeintaed coffee                
+1123;Chicorea or other coffee substitutes               
+1129;Coffee nos                  
+113;Infusing herbs                  
+1131;Mint                   
+1132;Vervain (fresh, dried and in bags)              
+1133;Absinthe                   
+1134;Horse mint                  
+1135;Marjoram or oregano                 
+1136;Camomile                   
+1137;Sage                   
+1139;Other infusion herbs                 
+12;FOOD SEASONINGS AND VARIOUS FOOD PRODUCTS NEC             
+121;Salt                   
+1211;Powder uniodized salt                 
+1212;Powder iodized salt                 
+1213;Uniodized sea salt crystals                
+1214;Iodized salt crystals                 
+1219;Salt nos                  
+122;Vinegar                   
+1221;Vinegar                   
+123;Spices and condiments                 
+1231;Pepper, ginger                  
+1232;Saffron, turmeric                  
+1233;Sweet or hot pepper                
+1234;Caraway                   
+1235;Cinnamon                   
+1236;Anise                   
+1237;Sesame                   
+1238;Mixed spices and condiments                
+1239;Other spices and condiments (sanouj, gum, nutmeg)             
+124;Food seasonings                  
+1241;Flavourings (Maggie, Knorr and assimilated products)              
+1242;Mustard, mayonnaise and assimilated products               
+1243;Tomato sauce                  
+1244;Ketchup                   
+1245;Other food seasoning products                
+125;Yeast                   
+1251;Baked yeast                  
+1252;Granular yeast                  
+1259;Yeast nos                  
+126;Dehydrated soups                  
+1261;Dehydrated soups                  
+13;Non alcoholic BEVERAGES                 
+131;Fruit and vegetable juices                
+1311;Vegetable juices                  
+1312;Orange juice                  
+1313;Other fruit juice (apples, bananas…)               
+132;Non alcoholic drinks                 
+1321;Mineral waters                  
+1322;Sodas                   
+1323;Syrups, sorbets                  
+1328;Waters nec (eau d’el redir…)               
+14;ALCOHOLIC BEVERAGES                  
+141;Wines                   
+1411;Wines                   
+142;Beers                   
+1421;Beers                   
+143;Other alcoholic beverages                 
+1431;Whiskies and champagnes                 
+1432;Aperitifs (Ricard, Pastis, Martini…)                
+1433;Eau de vie (cognac, rum, gin, vodka…)             
+1434;Other alcoholic drinks                 
+15;FOOD AND BEVERAGES CONSUMED OUTSIDE               
+151;Beverages (meal excluded) consumed in cafes and restaurants (incl. tip)          
+1511;Tea                   
+1512;Coffee                   
+1513;Other non alcoholic beverages                
+1514;Alcoholic beverages                  
+152;Beverages (meal excluded) consumed in hotels (incl. tip)            
+1521;Tea                   
+1522;Coffee                   
+1523;Other non alcoholic beverages                
+1524;Alcoholic drinks                  
+153;Beverages (meal excluded) consumed in other outside places (incl. tip)          
+1531;Tea                   
+1532;Coffee                   
+1533;Other non alcoholic beverages                
+1534;Alcoholic beverages                  
+154;Food consumed in restaurants (incl. tip)              
+1541;Cereal-based food                  
+1542;Vegetable-based food                  
+1543;Meat-based food                  
+1544;Fish-based food                  
+1545;Poultry-based food                  
+1549;Other food consumed in restaurants               
+155;Food consumed in hotels (including tip)              
+1551;Cereal-based food                  
+1552;Vegetable-based food                  
+1553;Meat-based food                  
+1554;Fish-based food                  
+1555;Poultry-based food                  
+1559;Other food consumed in hotels               
+156;Food consumed in other outside places (including tip)            
+1561;Cereal-based food                  
+1562;Vegetable-based food                  
+1563;Meat-based food                  
+1564;Fish-based food                  
+1565;Poultry-based food                  
+1569;Other food consumed in other outside places             
+16;TOBACCO, CIGARETTES AND OTHER SMOKABLE PRODUCTS              
+161;Tobacco (cigarettes and cigars)
+1611;Cigarettes                   
+1612;Cigars (including cigarillos)                 
+162;Tobacco (including cigarettes)                 
+1621;Chewable tobacco and snuff                
+1622;Smokable tobacco                  
+163;Other smokable products                 
+1631;Other smokable products                 
+1632;Other expenses related to tobacco               
+164;Drugs                   
+1641;Drugs                   
+17;VARIOUS EXPENDITURES RELATED TO FOOD PRODUCTS (EXCLUDING TRANSPORT)            
+171;Various expenditures related to food products              
+1711;Cakes and bread baking fees               
+1712;Seeds grain grinding expenses (including winnower fees)             
+1713;Other expenses related to cereal products              
+1714;Expenses related to non cereal food products             
+18;EXCEPTIONAL EXPENSES: FOOD PRODUCTS PURCHASE               
+181;Exceptional expenses: food products purchase               
+1811;Exceptional expenses                  
+1812;Exceptional expenses: live animals                
+1813;Exceptional expenses: meats                 
+1814;Exceptional expenses: poultry                 
+1815;Exceptional expenses: wheat-based products                
+1819;Exceptional expenses nos                 
+2;CLOTHING (including FOOTWEAR)                 
+21;OVERWEAR CLOTHING FOR ADULTS                
+211;Traditional clothing for men                
+2111;Jellaba                   
+2112;Burnous                   
+2113;Farajia                   
+2114;Tchamir (kechaba)                  
+2115;Bedaaya (gandura)                  
+2116;Sarual (traditional)                  
+2119;Other traditional overwear clothing for men              
+212;Traditional clothing for women (18 years and over)            
+2121;Jellaba                   
+2122;Haïk                   
+2123;Kaftan and bedaaya (sleeveless kaftan)               
+2124;Fukia and dfina (takchita)                
+2125;Tahtiya and tchamir (kmis)                
+2126;Traditional sarual                  
+2129;Other traditional clothing for women               
+213;Modern textile clothing for men (18 years and over)           
+2131;Coat and impermeable overcoat                
+2132;Suit, coordinates                  
+2133;Jacket and blazer, anorak                
+2134;Trousers (fabric or velvet), blue-jean (including dungarees and overalls) and shorts (excluding sportswear shorts)      
+2135;Knits (pull-over and waistcoats), sweaters               
+2136;Sportswear (tracksuit, swimsuit)                 
+2137;Workwear (including scrubs, blue dungarees, schoolwear, uniforms…)             
+2139;Other modern clothing for men               
+214;Modern leather or suede clothing for men (18 years and over)         
+2141;Leather or denim coat and overcoat              
+2142;Jacket and blazer, anorak                
+2143;Leather or suede trousers and shorts              
+2149;Other modern leather or denim clothing for men            
+215;Modern clothing for women (18 years and over)            
+2151;Leather, fabric or suede coat and overcoat, raincoat (incl. fur coat)         
+2152;Dress, skirt                  
+2153;Skirt and trousers suits and other coordinates             
+2154;Jacket and blazer, anorak                
+2155;Trousers (including bermuda shorts, pants…)               
+2156;Knits (pull-over and waistcoats), sweaters               
+2157;Workwear (including scrubs, blue dungarees, schoolwear…)              
+2158;Sportswear (tracksuit, swimsuit)                 
+2159;Other modern young’s clothes                
+216;Leather or suede modern clothing for women (18 years and over)         
+2161;Leather or sued coat and overcoat              
+2162;Dress, skirt                  
+2163;Skirt suits, trousers suits and other coordinates             
+2164;Jacket and blazer, anorak                
+2165;Leather or suede trousers (excl. shorts and sports wear)           
+2169;Other modern leather or suede clothes for women            
+217;Unallocated over clothing for men (18 years and over)           
+2171;Unallocated traditional over clothing for men              
+2172;Unallocated modern over clothing for men              
+2173;Unallocated over clothing for men               
+218;Unallocated over clothing for women (18 years and over)           
+2181;Unallocated traditional over clothing for women              
+2182;Unallocated modern over clothing for women              
+2183;Unallocated over clothing for women               
+22;Over clothing for children                
+221;Traditional clothing for 2 to 18 year-old boys            
+2211;Jellaba                   
+2212;Burnous                   
+2213;Bedaaya                   
+2219;Other traditional clothing for boys               
+222;Traditional clothing for 2 to 18 year-old girls            
+2221;Jellaba                   
+2222;Fukia and dfina                 
+2223;Kaftan and bedaaya                 
+2224;Tahtia and tchamir                 
+2229;Other traditional clothing for girls               
+223;Modern fabric clothing for 2 to 18 year-old boys           
+2231;Fabric impermeable coat and overcoat               
+2232;Suit, coordinates                  
+2233;Jacket and blazer, anorak                
+2234;Trousers (fabric or velvet), blue-jean (incl. dungarees) and shorts (excl. sports shorts)        
+2235;Knits (pull-over and waistcoats), sweaters               
+2236;Sportswear (tracksuit, swimsuit)                 
+2237;Workwear (including scrubs, blue dungarees, schoolwear uniforms…)             
+2239;Other modern clothing for men               
+224;Modern leather or suede clothing for 2 to 18 year-old boys         
+2241;Fabric impermeable coat and overcoat               
+2242;Suit, coordinates                  
+2243;Jacket and blazer, anorak                
+2249;Trousers (fabric or velvet), blue-jean (including dungarees) and shorts (excluding sports shorts)        
+225;Modern fabric clothes for 2 to 18 year-old girls           
+2251;Fabric impermeable coat and overcoat               
+2252;Dress and skirt                 
+2253;Skirt suits, trousers suits and other coordinates             
+2254;Jacket and blazer, anorak                
+2255;Trousers (including bermuda shorts, pants…)               
+2256;Knits (pull-over and waistcoats), sweaters               
+2257;Workwear (including scrubs, blue dungarees, schoolwear…)              
+2258;Sportswear (tracksuit, swimsuit)                 
+2259;Other modern clothing                 
+226;Modern leather or suede clothing for 2 to 18 year-old girls         
+2261;Leather or suede coat and overcoat              
+2262;Dress, skirt                  
+2263;Skirt suits, trousers suits and other coordinates             
+2264;Jacket and blazer, anorak                
+2265;Leather or dued trousers and shorts (exl. Sports shorts)           
+2269;Other modern leather or suede clothing for girls            
+227;Unallocated overclothing for 2 to 18 year-old boys            
+2271;Unallocated traditional overclothing for boys               
+2272;Unallocated modern overclothing for boys               
+2273;Unallocated overclothing for boys                
+228;Unallocated overclothing for 2 to 18 year-old girls            
+2281;Unallocated traditional overclothing for girls               
+2282;Unallocated modern clothing for girls               
+2283;Unallocated overclothing for girls                
+23;GARMENT ACCESSORIES
+231;Garment accessories for men (18 years and over)            
+2311;Tarbouch                   
+2312;Takiya and bonnet                 
+2313;Hat and cap, beret                
+2314;Erraza and turban                 
+2315;Belt, shoulder strap and assimilated articles              
+2316;Ties and assimilated articles                
+2317;Handkierchieves                   
+2318;Gloves                   
+2319;Other garment accessories for men               
+232;Garment accessories for women (18 years and over)            
+2321;Scarf                   
+2322;Sebnia                   
+2323;Veil                   
+2324;Shawls                   
+2325;Belts and assimilated articles                
+2327;Gloves                   
+2328;Hat, cap, beret                 
+2329;Other garment accessories for women               
+233;Garment accessories for 2 to 18-year old boys            
+2331;Tarbouch                   
+2332;Takiya and bonnet                 
+2333;Hat, cap, beret                 
+2334;Belts, shoulder straps and assimilated articles              
+2335;Ties and assimilated articles                
+2336;Handkirchieves                   
+2337;Gloves                   
+2339;Other garment accessories for boys               
+234;Garment accessories for 2 to 18 year-old girls            
+2341;Scarf                   
+2342;Sebnia                   
+2343;Veil                   
+2344;Shawl                   
+2345;Hat, cap, beret…                 
+2346;Belt and assimilated articles                
+2347;Handkerchieves                   
+2348;Gloves                   
+2349;Other garment accessories for girls               
+24;Shirts and other lingeries                
+241;Shirts and other lingeries for men (over 18)            
+2411;Shirts                   
+2412;Tee-shirt and seat-shirt                 
+2413;Boxers and briefs                 
+2414;Socks                   
+2416;Blouses, overalls, dressing gowns, housecoats and pyjamas             
+2419;Other underwear for men                
+242;Shirts and other underwear for women (over 18)            
+2421;Shirts                   
+2422;Tee-shirt and sweat-shirt                 
+2423;Bodysuit, half-slip, night gown, pyjama, tops              
+2424;Boxer, panty, girdle                 
+2425;Socks, stockings, tights                 
+2426;Bras                   
+2429;Other underwear for women                
+243;Shirts and other underwear for 2 to 18 year-old boys          
+2431;Shirts                   
+2432;Tee-shirt and sweat-shirt                 
+2433;Boxers and briefs                 
+2434;Socks                   
+2435;Blouses, overalls, dressing gowns, housecoats and pyjamas             
+2439;Other underwear for boys                
+244;Shirts and other underwear for girls for 2 to 18 year-old girls        
+2441;Shirts                   
+2442;Tee-shirt and sweat-shirt                 
+2443;Bodysuit, half-slip, night gown, pyjamas, tops              
+2444;Boxers and panties                 
+2446;Bras                   
+2449;Other underwear for women                
+25;GARMENT WOVEN FABRICS, WOOL AND HABERDASHERY              
+251;Garment woven fabrics for men (over 18)             
+2511;Woven fabrics of wool or containing wool             
+2512;Woven fabrics of cotton or containing cotton             
+2513;Synthetic fibres fabrics (nylon, tergal…)               
+2514;Woven fabrics for garment nos               
+2519;Other garment woven fabrics (silk…)               
+252;Garment woven fabrics for women (over 18)             
+2521;Woven fabrics of wool or containing wool             
+2522;Woven fabrics of cotton or containing cotton             
+2523;Synthetic fibres fabrics (nylon, tergal…)               
+2524;Woven fabrics for garment nos               
+2529;Other garment woven fabrics (silk…)               
+253;Garment woven fabrics for 2 to 18-year old boys           
+2531;Woven fabrics of wool or containing wool             
+2532;Woven fabrics of cotton or containing cotton             
+2533;Synthetic fibres fabrics (nylon, tergal…)               
+2534;Woven fabrics for garment nos               
+2539;Other garment woven fabrics (silk…)               
+254;Garment woven fabrics for 2 to 18-year old girls           
+2541;Woven fabrics of wool or containing wool             
+2542;Woven fabrics of cotton or containing cotton             
+2543;Synthetic fibres fabrics (nylon, tergal…)               
+2544;Woven fabrics for garment nos               
+2549;Other garment woven fabrics (silk…)               
+255;Haberdashery                   
+2551;Sewing thread                  
+2552;Wool thread                  
+2553;Buttons and assimilated articles                
+2554;Needles, thimbles, scissors                 
+2559;Other haberdashery articles                 
+26;INFANT AND BABY CLOTHES                
+261;Infant and baby clothes (over 2)              
+2611;Fabric, cotton baby clothes                
+2612;Infant and baby diapers and napkins…              
+2613;Infant and baby clothing                
+262;Pre-birth bought infant clothes                
+2621;Pre-birth bought infant clothing                
+2622;Pre-birth bought infant garments                
+27;OTHER CLOTHING EXPENSES                 
+271;Cloth-making expenses                  
+2711;Cloth-making expenses for men (18 and over)             
+2712;Cloth-making expenses for women (18 and over)             
+2714;Cloth-making for 2 to 18-year-old boys              
+2719;Cloth-making expenses nos                 
+272;Cloth maintenance expenses                 
+2721;Laundry and dry cleaning                
+2722;Dying                   
+2723;Cloth maintenance expenses nos                
+273;Other clothing expenses                 
+2731;Other clothing expenses (clothing rental…)               
+2732;Other clothing expenses nos                
+28;FOOTWEAR                   
+281;Men’s footwear                  
+2811;Modern leather shoes (shoes, boots…)               
+2812;Modern rubber shoes (shoes, boots…)               
+2813;Traditional shoes (Moroccan slippers…)                
+2814;Spots shoes (espadrilles, athletic shoes…)               
+2815;Other men’s shoes and footwear articles              
+2819;Men’s shoes nos                 
+282;Women’s footwear (18 and over)               
+2821;Modern leather shoes (shoes, boots…)               
+2822;Modern rubber shoes (shoes, boots…)               
+2823;Traditional shoes (Moroccan slippers…)                
+2824;Sports shoes (espadrilles, athletics shoes…)               
+2825;Other women’s shoes and footwear articles              
+2829;Women’s shoes nos                 
+283;Footwear for 2 to 18 year-old boys             
+2831;Modern leather shoes (shoes, boots…)               
+2832;Modern rubber shoes (shoes, boots…)               
+2833;Traditional shoes (Moroccan slippers…)                
+2834;Spots shoes (espadrilles, athletic shoes…)               
+2835;Other men’s shoes and footwear articles              
+2839;Boys’ shoes nos                 
+284;Footwear for 2 to 18-year-old girls              
+2841;Modern leather shoes (shoes, boots…)               
+2842;Modern rubber shoes (shoes, boots…)               
+2843;Traditional shoes (Moroccan slippers…)                
+2844;Spots shoes (espadrilles, athletic shoes…)               
+2845;Other men’s shoes and footwear articles              
+2849;Girls’ shoes nos                 
+285;Baby shoes (under 2)                
+2851;Baby shoes (under 2)                
+286;Shoe repair and footwear accessories               
+2861;Shoe products, maintenance articles and accessories              
+2862;Shoe repair expenses (resoling…)                
+287;Shoes nos                  
+2871;Shoes nos                  
+3;HOUSING AND ENERGY EXPENDITURE                
+31;RENT AND SERVICE CHARGES                
+311;Rent for main residences (inc. or excl. service charges and excl. garage rent)       
+3111;Fictitious rents                  
+3112;Rent for main residences (incl. or excl. service charges, excl. garage rent)        
+3113;Actual rents with service charges (incl. garages and different costs included in the rent)      
+312;Service charges for main residences               
+3121;Garage rent of main residence               
+3122;Service charges for main residences paid separately by the tenant or owner        
+313;Rents and service charges for secondary rsidences             
+3131;Rents free of service charges for secondary residences (incl. fictitious rent)         
+3132;Rents and service charges for secondary residences (incl. fictitious rent)          
+3133;Service charges for secondary residence (incl. garage fees paid separately)          
+314;Rents and service charges for other dwellings             
+3141;Rent incl. or excl. service charges for another dwelling           
+3142;Service charges for a garden, orchard or any other land parcel, guest-house or premises      
+3143;Rent of premises or parking place for a caravan, boat, 2-wheel vehicle…        
+3144;Rent, accommodation, housing expenditure paid by a household member living outside the household       
+3149;Other service charges for other dwellings              
+315;Exceptional rental expenditure                 
+3151;Mortgage expenses                  
+3152;Key money expenses                 
+3159;Other exceptional expenditure                 
+32;MAINTENANCE AND REPAIR                 
+321;Painting, masonry and assimilated works (excl. manpower costs)            
+3211;Painting and whitewashing (incl. wallpaper and wallcoating)             
+3212;Masonry (incl. cement and plaster)               
+3213;Window glassery                  
+3214;Carpentry                   
+3215;Locks                   
+3216;Electrical repair                  
+3217;Septic tank repair                 
+3219;Other assimilated works                 
+322;Electrical installation, plumbing, carpentry and assimilated works (excluding manpower costs)          
+3221;Electrical installation                  
+3222;Plumbing                   
+3223;Water hook-up                  
+3224;Woodframing                   
+3225;Telephone connection                  
+3226;Installation of private wells                
+3227;Solar energy system installation                
+3229;Other assimilated works                 
+323;Housing maintenance nos (excl. manpower costs)              
+3231;Housing maintenance nos                 
+324;Manpower costs                  
+3241;Manpower costs                  
+325;Painting, masonry and assimilated works (excl. manpower costs)            
+3251;Painting and whitewashing (incl. wallpaper and wallcoating)             
+3252;Masonry (including cement and plaster)               
+3253;Window glassery                  
+3254;Carpentry                   
+3255;Locks                   
+3256;Electrical repair                  
+3257;Septic tanks maintenance                 
+3259;Other assimilated works                 
+326;Electrical installation, plumbing, woodframing and assimilated works (including manpower costs)          
+3261;Electrical connection (hook-up, Interphone…)                
+3262;Plumbing                   
+3263;Water hook-up (excluding subscription fees, see code 3312)            
+3264;Woordframing                   
+3265;Telephone connection                  
+3266;Installation of private wells                
+3267;Installation of solar energy system               
+3269;Other assimilated works                 
+33;HEATING, LIGHTING, WATER, ENERGY EXPENDITURE               
+331;Water                   
+3311;Main residence water bill                
+3312;Secondary residence water bill                
+3313;Fees for water purchase (for households not connected)            
+3314;Water consumption fictitious costs                
+3319;Other water costs (sanitation…)                
+332;Electricity                   
+3321;First residence electricity bill                
+3322;Secondary residence electricity bill                
+3323;Fees for electricity purchase (excl. ONE and Regie (maintenance, generator and electrical unit…)       
+3324;Electricity consumption fictitious costs                
+3329;Other electricity costs                 
+333;Butane gas (excl. bottle deposit, see code 4329)            
+3331;Small botttle refill (3 kg)               
+3332;Big bottle refill (12 kg)               
+3333;Huge bottle refill (35 kg)               
+3334;Butane refill nos                 
+334;Liquid fuels                  
+3341;Domestic kerosine                  
+3342;Gas-oil and fuel for domestic usage (excl. gas-oil for vehicles)          
+3349;Other liquid fuels (methylated spirits)               
+335;Wood                   
+3351;Wood purchase expenses                 
+3352;Purchase expenses of collected wood for domestic usage            
+336;Coal                   
+3361;Charcoal                   
+3362;Coke, coal and other assimilated coals              
+337;Other energy expenditure                 
+3371;Cell                   
+3372;Battery refill                  
+3373;Carbide                   
+3374;Costs related to solar energy use              
+3375;Battery for domestic use                
+3376;Energy fictitious costs (solar energy…)               
+3379;Other energy expenditure                 
+338;Detritus vegetal tissue or animal waste              
+3381;Detritus vegetal tissue or animal waste              
+34;OTHER HOUSING EXPENDITURE                 
+341;Other housing expenditure                 
+3411;Other housing expenditure (well cleaning…)               
+4;HOUSEHOLD GOODS                  
+41;House linen and furnishing                
+411;Traditional furnishing                  
+4111;Meida                   
+4112;Chest                   
+4113;Shelf                   
+4114;Bench for seddari                 
+4119;Other traditional furniture                 
+412;Modern furnishing                  
+4121;Bed (incl. couch/divan and other bedroom furniture             
+4122;Table (incl. rolling table)                
+4123;Chair, armchair, sofa                 
+4124;Wardrobe, cupboard, credence, dresser, desk, bokkcase, shelf             
+4125;Other furniture for dining room or kitchen             
+4126;Other furniture for living room               
+4127;Equipment for children                 
+4128;Garden furniture                  
+4129;Other modern furnishing                 
+413;Floor covering                  
+4131;Rugs, carpets                  
+4132;Henbel                   
+4133;Moquette                   
+4134;Floor mat                  
+4139;Other floor covering                 
+414;Furnishing accessories                  
+4141;Mirrors                   
+4142;Knickknack items (earthen, ceramics…)                
+4143;Accessories for curtains and windows               
+4144;Flowers and assimilated                 
+4145;First aid cabinet, bathroom chets               
+4149;Other furnishing accessories                 
+415;Fabric household goods                 
+4151;Mattress                   
+4152;Cushion, pillow, bolster                 
+4153;Cover (including bedcover), plaids                
+4154;Handkerchieves                   
+4155;Bed linen (sheets, pillow case...)               
+4156;Upholstery                   
+4157;Net curtains (curtains, double ready made curtains…)             
+4159;Other fabric household article                
+416;Nonwoven fabrics for home furnishing               
+4161;Wool for mattress and cushion               
+4162;Lemkassa for mattress and cushion               
+4169;Other nonwoven fabrics for home furnishing (cotton…)             
+417;House linen                  
+4171;Napkin                   
+4172;Tablecloth                   
+4173;Kitchencloth                   
+4174;Other house linen (plastic tablecloth…)               
+418;Unallocated furniture                  
+4181;Unallocated furniture                  
+419;Furniture and furnishing repair expenditure               
+4191;Furniture and furnishing repair expenditure               
+42;KITCHENWARE                   
+421;Metal kitchenware                  
+4211;Teapot, coffepot, kettle                 
+4212;Metal tray                  
+4213;Dish                   
+4214;Pan, frying pan                 
+4215;Pressure cooker…                  
+4216;Basin, washbowl, bucket                 
+4217;Cutlery                   
+4218;Metal cutlery (knife, spoon, fork…)               
+4219;Other metal kitchenware                 
+422;Faience, China or ceramics tableware               
+4221;Tableware: dish, cup, bowl, tray, glass, soup tereen, salad bowl and assimilated articles       
+4222;Pot, pan                  
+4223;Tajine                   
+4224;Jug                   
+4226;Kneading trough                  
+4227;Jar                   
+4228;Whole set                  
+4229;Other faience, China or ceramics tableware              
+423;Glass tableware                  
+4231;Glass                   
+4232;Dish and bowl                 
+4233;Glass dining set                 
+4239;Other glass tableware                 
+424;Plastic tableware                  
+4241;Plastic dish, cup, glass, bowl, tray, fork, spoon, knife, tupperwares and assimilated articles       
+425;Paper or cardboard tableware                
+4251;Dishes, boxes                  
+4252;Paper napkins                  
+4253;Various paper tableware items                
+426;Wooden or vegetal made household items              
+4261;Wooden tableware: dishes, spoons…                
+4262;Wooden containers and differente household wood articles             
+4263;Swipe                   
+4264;Basket and different basketry assimilated articles              
+4269;Wooden or vegetal made items nos              
+427;Unallocated kitchenware                  
+4271;Unallocated kitchenware                  
+428;Kitchenware repair                  
+4281;Kitchenware repair                  
+43;Household appliances                  
+431;Sewing or knitting machines                
+4311;Electrical sewing machine                 
+4312;Mechanical sewing machine, sewing machine nos              
+432;Non electrical household appliances                
+4321;Non electrical cooker (with oven)               
+4322;Gas oven (for bread)                
+4323;Gas hobs                  
+4324;Brasero                   
+4325;Light appliances (lamp, night-light…)                
+4326;Non electrical heaters                 
+4327;Gas waterheater                  
+4328;Iron                   
+4329;Other non electrical household appliances (solar waterheater, gas bottle deposit…)          
+433;Electrical household appliances                 
+434;Electrical household appliances                 
+4331;Refrigerator, independent freezer                 
+4332;Electrical cooker with oven                
+4333;Washing machine (ioncluding drying machine)               
+4334;Dishwasher                   
+4335;Microwave oven                  
+4336;Electrical iron                  
+4337;Electrical oven for bread baking               
+4338;Electrical hob                  
+4339;Vaccum cleaner                  
+4340;Air conditioner unit, fan                
+4341;Electrical heater                  
+4342;Electrical waterheater                  
+4349;Other big electrical household appliances: portable washing machine, vented hood…          
+435;Small electrical household appliances                
+4351;Electrical blender,                  
+4352;Coffee grounder, electrical coffee maker               
+4353;Toaster, meat grill                 
+4354;Electrical knife, electrical box-opener                
+4359;Other small electrical household appliances               
+436;Garden appliances                  
+4361;Big garden appliances: mower…                
+4362;Small garden appliances: watering pipes, sprinklers, pruning shears, wheelbarrow, garden tools…         
+437;Electrical household appliances repair and accessories              
+4371;Electrical household appliances repair and accessories              
+44;LIGHT APPLIANCES                  
+441;Light appliances                  
+4411;Chandeliers and assimilated articles                
+4412;Bracket lamps and other types of lamps, lampshade            
+4419;Other light appliances nos                
+442;Small light appliances                 
+4421;Small light appliances: bulb, candle, pocket lamp, neon tubes…           
+4423;Small light appliances: electrical cable, plug, multiple plug, extension cables and various electrical accessories…      
+4429;Small light appliances nos                
+443;Light appliances maintenance and repair               
+4431;Electrical appliances maintenance and repair               
+45;DO-IT-YOURSELF, IRONMONGERY AND VARIOUS HOUSEHOLD APPLIANCES              
+451;Do-it-yourself appliances                  
+4511;Big do-it-yourself appliances: saw, electric drill…              
+4512;Small do-it-yourself handtools: hammer, screwdriver, different clamps, hand drill, tool box…         
+4513;Various ironmongery: nails, pipes, bolts, doorstop, cement, plaster, glus, padlocks, locks…         
+46;MAINTENANCE GOODS AND SERVICES                
+461;Cleaning and maintenance goods and services              
+4611;Washing products: laundry detergents-soaps, dishwashing soaps, softeners, stiffener            
+4612;Disinfectants (bleach,hail)                  
+4613;Maintenance products: insecticides, acid, ammonia, mothproof, glass maintenance            
+4614;Garden maintenance products                 
+4615;Air fragrance and fersheners                
+4616;House cleaning and maintenance services: air conditioning, disinfectant, garden maintenance          
+4617;Heaters, air conditioners maintenance                
+4619;Other maintenance and cleaning products               
+462;Cleaning and maintenance articles                
+4621;Brushes, brooms,                  
+4622;Sponges, cleaning towels and cloths               
+4623;Clothbrush, shoebrush                  
+4629;Other assimilated articles                 
+463;Other household products                 
+4631;Paper products: cellophane, aluminium, filter paper, paper napkins, vacuum cleaner’s bags         
+4632;Plastic products: plastic bags, dustbin bags, household gloves…            
+4633;Lasting accessories for electric household appliances: bowl for mixer…           
+4634;Items used for laundry drying: clothes-line, racks, clamps…            
+4639;Other household products nos                
+464;House linen cleaning and dry cleaning              
+47;OTHER EXPENDITURE RELATED TO HOUSEHOLD EQUIPMENT NEC             
+471;Other expenditure related to household equipment nec             
+4711;Expenditure related to household equipment transport              
+4712;Expenditure related to household equipement installation              
+4719;Other expenditure related to household equipment nec             
+5;HYGIENE AND MEDICAL CARE                
+51;Health and hygiene products and services              
+511;Bath and shower-related expenses                
+5111;Bath-related expenses (including massage)                
+5112;Shower-related expenses                  
+512;Hairdressing and beauty care services               
+5121;Hairdressing for boys (under 18)               
+5122;Hairdressing for men (over 18)               
+5123;Hairdressing fro girls (under 18)               
+5124;Hairdressing fro women (over 18)               
+5125;Beauty care for men and boys (sauna and massage)           
+5126;Beauty care for women and girls (sauna and massage)           
+5129;Hairdressing and beauty care                
+513;Health and beauty items                
+5131;Toothbrush                   
+5132;Comb (including hair pins, hair rolls…)              
+5133;Hair dryer                  
+5134;Razor blade                  
+5135;Mechanic and electric shaver                
+5136;Other health and beauty articles               
+514;Health and beauty products                
+5141;Toothpaste                   
+5142;Shampoo                   
+5143;Toilet soap                  
+5144;Shaving cream                  
+5145;Perfume and eau de toilette (including anti-perspirants and deodorants, aftershave…)          
+5146;Rhassoul                   
+5147;Henne                   
+5148;Paper products: tissues, toilet paper, sanitary napkins, feminine protection...)           
+5149;Other health and beauty products               
+515;Beauty products and cosmetics                
+5151;Blush foundation, powder                 
+5152;Lipstick                   
+5153;Nail polish, nail polish remover               
+5154;Beauty creams (including sunscreens and suntanning products)             
+5155;Hair products (hair dye, hair straightener products…)             
+5156;Khool and suak                 
+5159;Other beauty products and cosmetics               
+516;Health and hygiene products for infants              
+5161;Baby health and hygiene products               
+5162;Child health and hygiene products               
+517;Hygiene articles for infants                
+5171;Articles for infants: bottles, teats and comforters, bottle heaters, sterilizers          
+4179;Hygiene articles for infants nos               
+52;MEDICAL CARE                  
+53;MEDICAL CARE                  
+521;Doctors’ fees                  
+5211;Fees of general practicioners and specialized doctors for infants and babies (under 2)       
+5212;Fees of general practicioners and specialized doctors for children (between 2 and 18)       
+5213;Fees of general practicioners and specialized doctors for adults (over 18)         
+5214;Fees of medical care providers: nurse, midwife, physiotherapist for infants and babies        
+5215;Fees of medical care providers for children             
+5216;Fees of medical care providers for adults             
+5219;Fees nos                  
+522;Medical analysis and X rays               
+5221;Medical analysis for infants and babies (under 2)            
+5222;Medical analysis for childrens (between 2 and 18)            
+5223;Medical analysis for adults (over 18)              
+5224;Medical analysis nos                 
+5225;X-rays for infants (over 2)               
+5226;X-rays for children (between 2 and 18)             
+5227;X-rays for adults (over 18)               
+5229;X rays nos                 
+523;Hospital care and assimilated situations               
+5231;Infant and baby’s (under 2) hospitalization              
+5232;Child’s (between 2 and 18) hospitalization              
+5233;Adult’s (over 18) hospitalization                
+5234;Medical care for infants and babies (incl. ambulance transport) (under 2)         
+5235;Medical care for children (incl. ambulance transport) (between 2 and 18)         
+5236;Medical care for adults (incl. ambulance transport) (over 18)           
+5239;Hospitalization nos                  
+524;Birth delivery                  
+5241;Birth delivery in hospital                
+5242;Birth delivery at home with midwife (qabla)             
+5243;Birth delivery at home with trained nurse             
+5244;Birth delivery in a private hospital              
+5249;Birth delivery nos                 
+525;Medicine                   
+5251;Purchase of prescription medicine for infant and baby (under 2)          
+5252;Purchase of prescription medicine for child (between 2 and 18)          
+5253;Purchase of prescription medicine for adult (over 18)            
+5254;Purchase of unprescribed medicine for infant (under 2)            
+5255;Purchase of unprescribed medicine for child (between 2 and 18)          
+5256;Purchase of prescribed medicine for adult (over 18)            
+5259;Purchase of medicine nos                
+526;Dental care                  
+5261;Dental prothesis for children (under 18)              
+5262;Dental prothesis for adults (over 18)              
+5263;Tooth extraction for children (under 18)              
+5264;Tooth extraction for adults (over 18)              
+5265;Other dental care for children (under 18)             
+5266;Other dental care for adults (over 18)             
+5269;Dental care nos                 
+527;Glasses and other corrective medical appliances              
+5271;Medical eye glasses (incl. contact lenses) for children (under 18)          
+5272;Medical eye glasses (incl. contact lenses) for adults (over 18)          
+5273;Other corrective medical aid appliances (hearing aid) for children (under 18)         
+5274;Other corrective medical aid appliances (hearing aid) for adults (over 18)         
+5278;Medical appliances repair                 
+5279;Medical appliances nos                 
+528;First aid supplies                 
+5281;Wadding, cotton                  
+5282;Dressing, plaster, bandages, thermometers, various items              
+529;Traditional medicine                  
+5291;Fees of fqih, chuafa for infant and baby care (under 2)         
+5292;Fees of fqih, chuafa for child care (between 2 and 18)         
+5293;Fees of fqih, chuafa for adult care (over 18)           
+5294;Purchase of medicinal plants for infant and baby (under 2) care         
+5295;Purchase of medicinal plants for child (between 2 and 18) care         
+5296;Purchase of medicinal plants for adult (over 18) care           
+5299;Expenditure related to traditional medicine nos              
+530;Immunization expenses                  
+5301;Infant and baby (under 2) immunization expenses             
+5302;Child (between 2 and 18) immunization expenses             
+5303;Adult (over 18) immunization expenses               
+5309;Immunization expenses nos                 
+531;Other expenses related to medical care              
+5311;Other expenses related to medical care              
+6;TRANSPORT AND COMMUNICATIONS                 
+61;PRIVATE TRANSPORT                  
+611;Vehicle purchase                  
+6111;Car purchase                  
+6112;Motocycle purchase                  
+6113;Bicycle purchase                  
+6114;Purchase of vehicle for disabled persons              
+6119;Purchase of other means of transport (caravans, trailers…)            
+612;Maintenance and repair                 
+6121;Purchase of car spare parts (incl. car accessories, battery, tire, inner tube, spark plug, bulb and lamp…)   
+6122;Spare parts purchase (incl. car accessories, battery, tire, inner tube, spark plug, bulb and lamp, screws…)    
+6123;Car repair and maintenance expenses (washing, oil evacuation, review, battery refill…)         
+6124;Expenses related to other vehicles repair and maintenance (brakes…)           
+6125;Car technical visit expenses                
+613;Gasoline and lubrificants                 
+6131;Gas/fuel                   
+6132;Regular and special gas/fuel                
+6133;Gas-oil                   
+6134;Oil and other lubrificants                
+614;Other operating expenses                 
+6141;Garage rent                  
+6142;Parking expenses                  
+6143;Car rent                  
+6144;Other vehicles rent                 
+6145;Driving licence (driving school fees)               
+6146;Highway toll fares                 
+6149;Other current expenses                 
+615;Domestic animals used for transport               
+6151;Purchase of animals used for transport (horse, mule, donkey…)           
+6152;Food and other expenses related to domestic animals used for transport         
+62;PUBLIC TRANSPORT EXPENDITURE (excluding professional transport and transport related to holidays)
+621;Bus and taxi                 
+6211;Bus                   
+6212;Taxi                   
+622;Shared taxi                  
+6221;Shared taxi for a short run (intra-urban or intra-communal)           
+6222;Shared taxi for long run (intra-urban or intra-communal)            
+623;Coach                   
+6231;Coach                   
+624;Railway transport                  
+6241;1st class railway transport                
+6242;2nd class railway transport                
+6243;Economic class railway transport                
+6249;Railway transport nos                 
+625;Maritime transport                  
+6251;Maritime transport                  
+626;Air transport                  
+6261;Domestic air transport (inside Morocco)               
+6262;International air transport                 
+6269;Air transport nos                 
+627;Other means of public transport               
+6271;Barouche and cart                 
+6272;Boat                   
+6279;Fares of other means of transport              
+628;Other transport services                 
+6281;School transport fares                 
+6282;Holidays: total amount of transport fares              
+6283;Exceptional expenditure: transport travel fares for a ceremony            
+629;Public transport fictitious costs paid by employers to their employees          
+6291;Public transport fictitious costs paid by public employers to their employees         
+6292;Public transport fictitious costs paid by private employers to their employees         
+6293;Public transport fictitious costs paid by employers to their employees          
+63;COMMUNICATIONS                   
+631;Telephone purchase                  
+6311;Telephone purchase                  
+6312;Cell phone purchase                 
+6313;Purchase of other communications appliances: fax machine, answering machine…           
+632;Telephone fees                  
+6321;Telephone subscription fees                 
+6322;Cell phone subscription fees                
+6323;Fees related to cell phone (bill, card refill…)            
+6324;Fees related to telephones (bill, card refill…)             
+6325;Public telephones (incl. telephone cards)               
+6326;Private telephone booths                 
+6327;Shops and neighbours’ telephones                
+6328;Telephone repair                  
+6329;Fictitious expenses for telephone services               
+633;Stamping and franking fees                
+6331;Postal fees for money orders, parcels and packages            
+6332;Stamps (excl. stamp collection)                
+6333;Telegram, telex, fax                 
+6339;Other fees (mailbox…)                 
+7;Leisure, shows, education and culture               
+71;Electronic apPliances and accessories FOR LEISURE ACTIVITIES             
+711;TV sets and magnetoscopes                
+7111;Colour TV set                 
+7112;Black and white TV set               
+7113;Video player                  
+7114;Other assimilated appliances                 
+712;Radio set and record player               
+7121;Radio set (incl. transistor, autoradio…)               
+7122;Video set                  
+7123;Radio and tape and record player (radio cassette player, walkman…)          
+7124;Hifi deck                  
+7125;CD player                  
+7129;Other radio or music player appliances              
+713;Camera                   
+7131;Photo camera                  
+7132;Film and movie camera                
+7133;Projectors                   
+714;Music instruments                  
+7141;Music instruments                  
+715;Computer and video games appliances               
+7151;Computer                   
+7152;Computer and PC peripherals (printer, keyboard…)              
+7153;Computer accessories (mouse, diskettes, CD-ROMs…)               
+7154;Video game player                 
+7155;Video games accessories                 
+716;Other electronic articles                 
+7161;Calculators and various pocket electronic articles              
+7162;Photocopiers and typing machines                
+717;Other leisure durable goods                
+7171;Sailboat, boat                  
+7172;Satellite dish                  
+7173;Other audiovisual equipment: decoder for TV digital channels (Canal Horizon, ART, Spanish channels…)       
+7174;Non medical optical devices: magnifying glasses, magnifiers and assimilated devices          
+7179;Other leaisure durable goods nos               
+72;OTHER LEISURE ARTICLES AND LEISURE GOODS RENTAL FEES            
+721;Sports, fishing, hunting and camping articles              
+7211;Sports equipment and articles                
+7212;Fishing equipment and supplies (fishing rod, hooks, baits…)            
+7213;Hunting equipment and supplies (hunting gun…)              
+7214;Camping equipment and articles (tent, sleeping bag, airbed, parasol umbrella…)          
+7215;Various expenses related to hunting and fishing             
+7216;Sports, fishing, hunting and camping articles nec             
+722;Games and leisure articles                
+7221;Games (cards, dominoes, chess, scrabble…)               
+7222;Games and toys for different household members             
+7223;Cycles for children                 
+7224;Strollers and prams                 
+7228;Other games and leisure articles               
+723;Audiovisual accessories                  
+7231;Recods, recorded audio cassettes and tapes              
+7232;Recorded video cassettes and tapes               
+7233;Blank cassettes and video tapes               
+7234;Camera films, pellicles                 
+7235;Small accessories for audiovisual items               
+724;Pets                   
+7241;Purchase of pets (dog, cat, bird…)              
+7242;Domestic animal food                 
+7243;Veterinary fees                  
+7244;Accessories for pets and animals               
+7249;Other expenses related to domestic animals              
+725;Gardening, plants                  
+7251;Flowers and plants                 
+7252;Plants, seeds and grains and assimilated products             
+7253;Gardening products: fertilizer, weedkiller…                
+726;Repair of leisure and audiovisual articles              
+7261;Leisure articles repair                 
+7262;Audiovisual articles repair                 
+7263;Expenditure related to leisure and audiovisual items (incl. installation of TV antenna and satellite dish)     
+727;Leisure goods rental                 
+7271;Rental expenditure of audiovisual appliances               
+7272;Video tapes rental expenditure                
+7273;Sports articles rental expenditure                
+7279;Other rental expenditure of leisure goods              
+73;ENTERTAINMENT AND CULTURAL ACTIVITIES (excl. restaurants, cafes, hotels)            
+731;Cinema, theater, music performances, shows and assimilated activities            
+7311;Cinema                   
+7312;Theater                   
+7313;Music performances                  
+7314;Musicians and singers groups                
+7319;Other assimilated shows and performances               
+732;Sports shows                  
+7321;Entry fees to football games               
+7322;Entry fees to other sports games              
+733;Other common entertainment activities                
+7331;Circus                   
+7332;Zoo                   
+7333;Museums and monuments                 
+7339;Other entertainment activities (fairs)                
+734;Expenditure related to a sports or leisure activity            
+7341;Health and fitness club membership fees              
+7342;Non periodic fees for sports activities (swimming pool, tennis court…)          
+7343;Clubs (excl. sports club) membership fees              
+7344;Sports or leisure private and collective lessons             
+7345;Activity rooms and games arcades               
+7346;Cyber cafe                  
+7349;Other expenditure related to sports or leisure activities            
+735;Books (excl. school textbooks), newspapers and assimilated             
+7351;Books excluding textbooks                 
+7352;Daily newspapers                  
+7353;Periodicals and magazines                 
+7354;Comics                   
+7355;Library subscription, non school books rental              
+7359;Other printed material (postcards, namecards, calendar, diary, poster…)            
+736;Photos and films                 
+7361;Purchase of films and pellicles (incl. photo album)            
+7362;Photo development and printing                
+7369;Other expenditures related to photos and films             
+737;Gambling games                  
+7371;Lottery, loto, turf, totofoot and assimilated games             
+7379;Other expenses related to gambling games              
+738;Audiovisual subscriptions                  
+7381;Foreign digital TV channels subscription (Canal Horizon, ART, Spanish channels…)          
+7389;Other audiovisual subscription fees (Internet…)               
+739;Consumable leisure goods rental                
+7391;Audiovisual appliances rental fees                
+7392;Video tapes rental fees                
+7393;2-wheel vehicles, car renting                
+7394;Leisure animals renting                 
+7399;Other rental expenditure related to leisure consumable goods            
+74;HOLIDAYS AND WEEKEND EXPENDITURE                
+741;Expenditure related to holidays spent abroad (4 days minimum)           
+7411;Air transport fares                 
+7412;Railway transport fares                 
+7413;Coach transport fares                 
+7414;Boat transport fares                 
+7415;Accommodation expenditure (hotel or house)               
+7416;Expenditure related to food consumption in hotels, retaurants and cafes          
+7417;Other expenditure related to holiday spent abroad             
+7418;Expenditure related to holiday spent abroad: package tour paid to travel agency        
+7419;Expenditure related to holiday spent abroad: global amount nos           
+742;Expenditure related to holidays spent in Morocco (4 days minimum)          
+7421;Air transport fares                 
+7422;Railway transport fares                 
+7423;Coach transport fares                 
+7424;Boat transport fares                 
+7425;Accommodation expenditure (hotel or house)               
+7426;Expenditure related to food consumption in hotels, retaurants and cafes          
+7427;Other expenditure related to holidays spent in Morocco            
+7428;Expenditure related to holidays spent in Morocco: package tour paid to a travel agency      
+7429;Expenditure related to holidays spent in Morocco: global amount nos          
+743;Expenditure related to weekend leisure activities or short trips abroad (4 days minium)       
+7431;Transport fares                  
+7432;Accommodation expenditure (hotel)                 
+7433;Expenditure related to food and beverage consumed in hotels, cafes, restaurants         
+7434;Other expenditure related to weekend or less than 4-day trip abroad         
+7435;Expenditure related to weekend or holiday spent abroad: global amount nos         
+744;Expenditure related to weekend leisure activities or to 4-day minimum stay in Morocco       
+7441;Transport fares                  
+7442;Accommodation expenditure (hotel)                 
+7443;Expenditure related to food and beverage consumed in hotels, cafes, restaurants         
+7444;Expenditure related to stays among family members or friends           
+7445;Other expenditure related to weekend or 4-day minimum trip abroad          
+7446;Expenditure related to weekend or holiday spent in Morocco: global amount nos        
+745;Leisure expenditure nos                 
+7451;Leisure expenditure nos                 
+75;EDUCATION                   
+76;EDUCATION                   
+751;Preschool education                  
+7511;Registration fees                  
+7512;Boarding and half-boarding                 
+7513;Transport fees                  
+7514;School supplies bought at the beginning of the school year          
+7515;School fees                  
+7516;School supplies bought during the school year             
+7519;Other unallocated expenditures                 
+752;Private primary education                 
+7521;Registration fees (incl. school insurance and parents association membership fees)          
+7522;School fees                  
+7523;Boarding and half-boarding fees                
+7524;Transport fare (incl. bus subscription fees)              
+7525;School supplies bought at the beginning of the school year          
+7526;School supplies bought during the school year             
+7529;Other unallocated expenditures                 
+753;Public primary education                 
+7531;Registration fees (incl. school insurance and parents association membership fees)          
+7532;Boarding and half-boarding fees                
+7533;Transport fare (incl. bus subscription fees)              
+7534;School supplies bought at the beginning of the school year          
+7535;School supplies bought during the school year             
+7539;Other unallocated expenditures                 
+754;Private secondary education                 
+7541;Registration fees (incl. school insurance and parents association membership fees)          
+7542;School fees                  
+7543;Boarding and half-boarding                 
+7544;Transport fare (incl. bus subscription fees)              
+7545;School supplies bought at the beginning of the school year          
+7546;School supplies bought during the school year             
+7549;Other unallocated expenditures                 
+755;Public secondary education                 
+7551;Registration fees (incl. school insurance and parents association membership fees)          
+7552;Boarding and half-boarding                 
+7553;Transport fare (incl. bus subscription fees)              
+7554;School supplies bought at the beginning of the school year          
+7555;School supplies bought during the school year             
+7559;Other unallocated expenditures                 
+756;Public high education                 
+7561;Registration fees                  
+7562;Boarding and half-boarding fees                
+7563;Transport fare                  
+7564;School supplies bought at the beginning of the school year          
+7565;School supplies bought during the school year             
+7569;Other unallocated expenditures                 
+757;Private high education                 
+7571;Registration fees                  
+7572;School fees                  
+7573;Boarding and half-boarding fees                
+7574;Transport fare                  
+7575;School supplies bought at the beginning of the school year          
+7576;School supplies bought during the school year             
+7579;Other unallocated expenditures                 
+758;Public professional training                 
+7581;Registration fees                  
+7582;School fees                  
+7583;Transport fare                  
+7584;School supplies bought at the beginning of the school year          
+7585;School supplies bought during the school year             
+7589;Other unallocated expenditures                 
+759;Private professional training                 
+7591;Registration fees                  
+7592;School fees                  
+7593;Transport fare                  
+7594;School supplies bought at the beginning of the school year          
+7585;School supplies bought during the school year             
+7599;Other unallocated expenditures                 
+760;Other education expenditure                 
+7601;Private course fees (incl. periodic and occasional expenditure incurred for these courses)        
+7602;Expenditure related to correspondence studies               
+7603;Manual jobs training course fees               
+7604;Expenditure and donations in kind related to Al Koran learning          
+7605;Koranic school (msid) fees (common periodic expenditure and occasional expenditure)          
+7606;Literacy training course fees                
+7609;Other education fees                 
+761;Education fees                  
+7611;Primary education fees                 
+7612;Secondary education fees                 
+7613;High education fees                 
+7614;Private education fees                 
+7615;Public education fees                 
+762;Non formal education fees                
+7621;Non formal education fees                
+8;OTHER GOODS AND SERVICES                
+81;JEWELRY AND WATCH ARTICLES                
+811;Jewelry (rings, chains, earrings…)                
+8111;Gold jewelry (including precious stones)               
+8112;Silver jewelry                  
+8113;Other metal jewelry                 
+8114;Jewelry repair                  
+812;Watch articles                  
+8121;Clock                   
+8122;Alarm clock                  
+8123;Wrist watch (including pocket watch)               
+8124;Watches nos                  
+8125;Watch repair and accessories                
+82;STATIONERY ARTICLES AND SUPPLIES                
+821;Stationery                   
+8211;Stationery (notebook, paper, envelops, postcards, diary)              
+822;Pencils, pens, inks                 
+8221;Pencils, pens, inks                 
+823;Articles for writing and drawing               
+8231;Articles for writing                 
+824;Other stationery articles and supplies               
+8241;Other stationery articles and supplies               
+825;Photocopy and printing expenses                
+8251;Photocopy and printing expenses                
+83;LEATHER GOODS, TRAVEL ARTICLES                
+831;Leather goods, travel articles                
+8311;Wallet, purse                  
+8312;Handbag                   
+8313;Travel bags, sportsbags and assimilated articles              
+8314;Binders, satchels, school bags                
+8315;Other leather goods nec                
+84;OTHER PERSONAL ARTICLES                 
+841;Smoker’s articles                  
+8411;Smoker’s articles (lighter, pipe, ashtray, cigarette paper…)             
+842;Sun glasses                  
+8421;Sun glasses                  
+849;Other personal articles nec                
+8491;Other personal articles nec                
+85;VARIOUS EXPENDITURES                  
+851;Domestic services                  
+8511;Fees for domestics living among the household             
+8512;Fees for domestics not living among the household            
+8513;Housekeeper, gardener fees                 
+8514;Driver fees                  
+8515;Fictitious expenses for maids or domestics              
+8516;Fictitious expenses for housekeeper, gardener               
+8517;Fictitious expenses for driver                
+8518;Fictitious expenses related to domestic services nos             
+8519;Domestic services expenditures nos                
+852;Expenditure related to stays outside the household usual place of residence and not related to leisure activities (excl. transport fare)
+8521;Expenditure related to stays outside the household usual place of residence and not related to leisure activities (excl. transport fare)
+853;Exceptional expenditure                  
+8531;Exceptional expenditure for birth, birthday, baptism, circumcision             
+8532;Exceptional expenditure for wedding and engagement              
+8533;Exceptional expenditure for pilgrimage                
+8534;Exceptional expenditure for funerals                
+8535;House moving expenditure                 
+8539;Other exceptional expenditure                 
+854;Unallocated pocket money                 
+8541;Unallocated pocket money for children over 15             
+8542;Unallocated pocket money for household children over 15            
+8543;Personal pocket money spent by a person living outside the household usual place of residence     
+855;Other expenditures nec                 
+8551;Presents nos                  
+8552;Expenses, fees nos                 
+8553;Unallocated individual expenses                 
+86;JURIDICAL FEES                  
+861;Juridical fees                  
+8611;Adoul fees                  
+8612;Lawyer fees                  
+8613;Notary fees                  
+8614;Court registration fees                 
+87;INSURANCE                   
+871;Health insurance                  
+8711;Social security contribution paid by households to social security funds          
+8712;Supplementary medical insurance                 
+8713;Life or death insurance                
+8714;Insurance: supplementary pension fund                
+8719;Other health insurance                 
+872;Insurance related to main or secondary residence             
+8721;Insurance related to main or secondary residence             
+873;Car, two-wheel and other vehicles insurance              
+8731;Car insurance                  
+8732;Two-wheel vehicle insurance                 
+8733;Other vehicles insurance (including boats)               
+874;Other insurance                  
+8741;School insurance                  
+8742;Travel insurance (Maroc assistance)                
+8743;Specific good insurance                 
+8749;Other insurances                  
+88;BANKING SERVICES                  
+881;Fees related to banking current operations              
+8811;Fees related to banking current operations              
+882;Subsription or a scheme offering package services             
+8821;Subscription offering package services                
+883;Other fees of banking services               
+8831;Other fees for banking services               
+9;FISCAL EXPENDITURE, MONEY TRANSFERS AND LOAN REIMBURSEMENT
+91;FISCAL EXPENDITURE (not related to professional activities)             
+911;Fiscal expenditure                  
+9111;Road-fund license                  
+9112;Car registration documents (incl. tax stamp for driving license)           
+9113;Fines and levies                 
+9114;Registration fees and taxes (passport, national identity card, birth certificate, license, tax stamps)       
+9115;Judicial tax                  
+9116;Urban tax                  
+9117;Garbage tax                  
+9119;Other fiscal expenditure (registration fees and taxes…)             
+92;CASH TRANSFERS                  
+921;Cash transfers                  
+9211;Cash transfers to Moroccan private or public institutions            
+9212;Alimonies paid to a household member (former wife…)            
+9213;Regular cash transfer to family members              
+9214;Regular cash transfers to non family members             
+9215;Amounts paid regularly to a family member             
+9216;Amounts paid regularly to a non-family member             
+9217;Transfers from parents to their children during their higher education years in Morocco       
+9218;Transfers from parents to their children during their higher education years abroad        
+9219;Small presents                  
+922;Donations and presents for worship               
+9221;Donations and presents for worship               
+923;Trade-unions, political parties or NGOs membership fees             
+9231;Trade-unions, political parties or NGOs membership fees             
+93;DONATIONS in kind                 
+931;Food donations and presents                
+9311;Food donations and presents offered to private or public institutions          
+9312;Food donations and presents offered to households             
+9313;Food donations and presents offered to households             
+932;Non-food donations and presents                
+9321;Donations and presents (excl. food) given to private or public institutions         
+9322;Donations and presents (excl. food) offered to residing households           
+9323;Donations and presents offered to non residing households            
+933;Worship donations in kind                
+9331;Worship donations in kind                
+934;Donations to trade-unions, political parties or NGOs             
+9341;Donation to trade-unions, political parties or NGOs             
+94;LOAN REIMBURSEMENT                  
+941;Reimbursement of purchase-loans before the reporting period of the survey          
+9411;Reimbursement of loan to purchase consumption goods before the reporting period of the survey      
+9412;Reimbursement of loan to purchase other goods and services before the reporting period of the survey    
+942;Reimbursement of housing loans                
+9421;Reimbursement of loans contracted to acquire or build main residence          
+9422;Reimbursement of loans contracted to acquire or build secondary residence          
+9423;Reimbursement of loans contracted to acquire a parcel, guest- house, premises…         
