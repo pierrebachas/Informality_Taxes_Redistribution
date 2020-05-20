@@ -16,7 +16,7 @@ The data comes from nationally representative income and expenditure surveys fro
 Some of these micro-data are open access and can be obtained from the statistical agency of each countries, and others are restricted access. We list below the country names, survey acronyms and years for anyone interested in replicating our analysis. 
 
 |Country name  |Survey        |Year |Source          | 
-| :------------- | ------------- |----- |:-----------------|
+| :------------- | :------------- |:----- |:-----------------|
 | Benin         |  EMICOV       | 2015 | Stat. Office    |
 | Bolivia       |  ECH          | 2004 | Stat. Office    |
 | Brazil	       |  POF	        | 2009	| Stat. Office    |
