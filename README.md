@@ -16,13 +16,13 @@ The data comes from nationally representative income and expenditure surveys fro
 Some of these micro-data are open access and can be obtained from the statistical agency of each countries, and others are restricted access. We list below the country names, survey acronyms and years for anyone interested in replicating our analysis. 
 
     Country name	Survey	Year	Source
--  Benin	        EMICOV	2015	World Bank
+-  Benin	      EMICOV	2015	World Bank
 -  Bolivia	      ECH	    2004	Stat. Office
 -  Brazil	      POF	    2009	Stat. Office
 -  BurkinaFaso	  EICVM	  2009	Stat. Office
 -  Burundi	      ECVM	  2014	World Bank
--  Cameroon	    ECAM	  2014	World Bank
--  Chad	        ECOSIT	2003	World Bank
+-  Cameroon	      ECAM	  2014	World Bank
+-  Chad	          ECOSIT	2003	World Bank
 -  Chile	        EPF	    2017	Stat. Office
 -  Colombia	    ENIG	  2007	Stat. Office
 -  Comoros	      EDMC	  2013	Stat. Office
