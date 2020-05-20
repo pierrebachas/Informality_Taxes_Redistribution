@@ -15,8 +15,8 @@ Notes on the Data
 The data comes from nationally representative income and expenditure surveys from 31 countries. 
 Some of these micro-data are open access and can be obtained from the statistical agency of each countries, and others are restricted access. We list below the country names, survey acronyms and years for anyone interested in replicating our analysis. 
 
-| Country name  | Survey        | Year 
-| ------------- | ------------- |
+| Country name  | Survey        | Year | World Source | 
+| ------------- | ------------- |----- |--------------|
 | Benin         | Content Cell  |
 | Bolivia       | Content Cell  |
    
