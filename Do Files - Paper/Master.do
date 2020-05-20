@@ -2,7 +2,27 @@
 ***********************************************************************
 * 	MASTER FILE INFORMALITY, CONSUMPTION TAXES and REDISTRIBUTION 	  * 
 ***********************************************************************
-
+***************
+* DIRECTORIES *
+***************
+	
+ if "`c(username)'"=="wb446741" { 												// Pierre's WB computer 
+	global main "C:\Users\wb446741\Dropbox\Regressivity_VAT\Stata"
+	}
+	else if "`c(username)'"=="pierrebachas" { 									// Pierre's personal laptop
+	global main "/Users/pierrebachas/Dropbox/Regressivity_VAT/Stata"
+	}	
+	else if "`c(username)'"=="Economics" { 												// Lucie
+	global main C:\Users\Economics\Dropbox\Regressivity_VAT_own\Regressivity_VAT\Stata
+	}
+	else if "`c(username)'"=="wb520324" { 											// Eva's WB computer 
+	global main "C:\Users\wb520324\Dropbox\Regressivity_VAT/Stata"
+	}
+	
+	else if "`c(username)'"=="evadavoine" { 									// Eva's personal laptop
+	global main "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata"
+	}	
+	
 ***********************
 * SCENARIO CONSIDERED *
 ***********************	
@@ -27,9 +47,18 @@
 			global Inf_weight_3 = 1		// Share of corner stores informal
 			}		
 			
-	*************************************************
-	* Overview of all script names					*
-	*************************************************
+	**************************************************************************************************
+	* Data Sources not from Expenditure Surveys				 										*
+	**************************************************************************************************			
+	
+	** Excel country level info: file name (WDI) 
+	** Country Loop for Main Anlasis: Allows to loop and change countries considered in the analysis
+	** Country Loop for Price Regressions. 
+			
+			
+	**************************************************************************************************
+	* Overview of all script names, based on Expenditure survey Data of 31 Countries				 *
+	**************************************************************************************************
 	
 	** Descriptive Figures: Based on microdata, country by country 
 		  Informality_Engel_curves.do						// Informality Engel Curves by Country. Figure A1	
@@ -53,7 +82,7 @@
 		  
 		  * Figure based on census data 
 		  cross_country_census_analysis.do				// Figure 1, panel(a) using census data 
-		  FirmSize_Census.do 							// Figure 2,3 panel (b), (c)
+		  FirmSize_Census.do 							// Figure 1 panel (b), (c)
 		  
 		  * Figures based on postestimation data 
           Graphs_regressions_output_IEC.do 				// Figures for Informality Engel curves: Figure 2, 3, A2, A3, Table 2, A1, A2, A3, A6, A8				  
@@ -72,8 +101,8 @@
 
 	** PAPER SECTION 3.2.2		  
 	** Figures and explorations for descriptive mechanism section 
-		  Quality_price_tradeoff.do						// Produces the table on reason for choosing PoP and a figure on quality by decile: Figure A9 Table A4 
-		  cross_country_price_quantity_regressions_harmonized.do 	// regressions on price
+		  Quality_price_tradeoff.do									// Produces the table on reason for choosing PoP and a figure on quality by decile: Figure A9 Table A4 
+		  cross_country_price_quantity_regressions_harmonized.do 	// Harmomnization of unit value data and regressions of prices by type of retailer. 
 		  Graphs_regressions_output_price_quantity.do 				// Figure for Table A5
 
 	** PAPER SECTION 3.3		  
@@ -89,13 +118,10 @@
 
 	** PAPER SECTION 6: 		
 	** Optimal Tax Programs  		  
-	
 		  optimal_tax_program.do				// Optimal tax food/non food 
 		  optimal_tax_program_COICOP12.do		// Optimal tax rate differentiation across all 12 COICOPs		 
 		  Calibrations_results.do 				// Creates Figure 7, A13, A14, A15
 		  
-		  Optimal_tax_simulated_data.do 		// (unused in paper) Optimal tax scenarios, simulated data to check role of slope versus budget shares  
-	
 	** Gini 
 		  gini.do 								// Compute change in gini under the different scenario, food/non-food rate differentiation
 		  GINI_COICOP12.do 						// Compute change in gini under the different scenario, rate differentiation across all 12 COICOPs		  
@@ -103,6 +129,14 @@
 		  gini.R 								// Creates Figure 8  
 		  Gini_output_tableA7					// Creates Table A7
 
+	** Auxiliary and Unused in paper
+		Calibrations_results_full_rate_diff			// Results of Full Rate Differentiation
+		Engel_curves_Exploration.do 				// Use the deciles spending on the different sectors and build the formal/informal IEC by good 		 
+		Optimal_tax_simulated_data.do 				// (unused in paper) Optimal tax scenarios, simulated data to check role of slope versus budget shares  
+		VAT_threshold 								// 
+	
+		
+			
 		
 		
 		
