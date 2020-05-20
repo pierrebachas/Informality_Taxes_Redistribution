@@ -347,12 +347,6 @@
 	collapse t_eff* , by(decile)
 	
 	****************************************************************************************************
-	** Appendix Table
-	****************************************************************************************************
-	
-
-
-	****************************************************************************************************
 	** CENTRAL SCENARIO: Balanced Budget, Consumption used as denominator, No Savings, VAT on inputs  
 	****************************************************************************************************	
 	local central = 1
@@ -361,7 +355,7 @@
 	local graph_region_options "graphregion(color(white)) bgcolor(white) plotregion(color(white))"
 	local size med
 	local xtitle "xtitle(Decile of Expenditure Distribution, margin(medsmall) size(`size'))"
-	local ytitle "ytitle(Taxed Expenditure Share, margin(medsmall) size(`size'))"
+	local ytitle "ytitle(Taxed Budget Share, margin(medsmall) size(`size'))"
 	local yaxis "ylabel(0.04(0.02)0.16, nogrid labsize(`size')) yline(0.04(0.02)0.16, lstyle(minor_grid) lcolor(gs1)) " 
 		
 	local xaxis "xlabel(1(1)10, labsize(`size'))"	
@@ -386,6 +380,7 @@
 	#delim cr
 	
 	}
+	
 	
 	local savings = 1
 	if `savings' {

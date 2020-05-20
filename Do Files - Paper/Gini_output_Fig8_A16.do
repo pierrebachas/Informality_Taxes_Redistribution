@@ -68,7 +68,7 @@ save `gdp'
 	
 	drop marketincome directtaxes_2 contributions_2 contributorypensions_2 directtransfersincludingcontribu disposableincome_2 indirecttaxes_2 indirectsubsidies_2 consumableincome_2 education_2 health_2 otherinkind_2 fees_2 finalincome_2
 	* We are going to be using the income measures where pension is part of market income, we do this to increase the sample-size;
-	** this differs slightly from OECD, but doesn't matter since either way, pensions is added to the pre-direct tax income measure
+	
 	destring decile, replace
 	
 	drop if marketincomepluspensions==.
@@ -77,8 +77,7 @@ save `gdp'
 	* Keep only countries which have marketincome, direct taxes, and direct transfers
 	
 	* Calculate gross income = market income, post direct transfers pre direct taxes
-	* I can't figure out how disposable is calculated; so I will calculate the post transfer pre tax variables as 'disposable' - 'taxes'
-	* this is correct in the sense that it allows us to inspect the marginal impact of direct taxes, once direct transfers are calculated (whatever they may be)
+	
 	egen directtax=rowtotal(directtaxes contributions)
 	
 	gen direct_transfer=disposableincome-directtax
@@ -87,7 +86,7 @@ save `gdp'
 	gen income_gross=marketincome*(1+direct_transfer)
 	
 	* calculate disposable income = market income, post direct transfers and direct taxes
-	** NB: I will include contributions as direct taxes (most importantly, soc sec contributions) b/c they are counted in direct taxes in OECD countries
+	
 	
 	gen income_disposable=marketincome*(1+disposableincome)
 	
@@ -95,7 +94,7 @@ save `gdp'
 	sum check1
 	
 	* calculate income_consumable_pretax = market income, post direct transfers and direct taxes and indirect subsidies
-	* this is in principle the calculation; I'm directly using the disposable income measure in Lustig, even though that does not perfectly add up to 'post direct tax and transfers'
+
 	replace indirectsubsidies=0 if indirectsubsidies==.
 	
 	gen check_alt=(disposableincome+indirecttaxes+indirectsubsidies)/consumableincome
