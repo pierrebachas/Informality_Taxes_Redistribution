@@ -17,7 +17,7 @@ Some of these micro-data are open access and can be obtained from the statistica
 
     Country name	Survey	Year	Source
 1)  Benin	        EMICOV	2015	World Bank
-2)  Bolivia	      ECH	    2004	Stat. Office
+  Bolivia	      ECH	    2004	Stat. Office
 Brazil	      POF	    2009	Stat. Office
 BurkinaFaso	  EICVM	  2009	Stat. Office
 Burundi	      ECVM	  2014	World Bank
