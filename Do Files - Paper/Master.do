@@ -100,6 +100,7 @@
 		  GINI_COICOP12.do 						// Compute change in gini under the different scenario, rate differentiation across all 12 COICOPs		  
 		  Gini_output_Fig8_A16.do				// Creates .csv to import to R and create Figure 8 and A16
 		  gini.R 								// Creates Figure 8  
+		  gini_middle_low_inc.R 				// Creates Figure A16
 		  Gini_output_tableA7					// Creates Table A7
 
 	** Excel files to loop over all countries
