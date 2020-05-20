@@ -2,27 +2,7 @@
 ***********************************************************************
 * 	MASTER FILE INFORMALITY, CONSUMPTION TAXES and REDISTRIBUTION 	  * 
 ***********************************************************************
-***************
-* DIRECTORIES *
-***************
-	
- if "`c(username)'"=="wb446741" { 												// Pierre's WB computer 
-	global main "C:\Users\wb446741\Dropbox\Regressivity_VAT\Stata"
-	}
-	else if "`c(username)'"=="pierrebachas" { 									// Pierre's personal laptop
-	global main "/Users/pierrebachas/Dropbox/Regressivity_VAT/Stata"
-	}	
-	else if "`c(username)'"=="Economics" { 												// Lucie
-	global main C:\Users\Economics\Dropbox\Regressivity_VAT_own\Regressivity_VAT\Stata
-	}
-	else if "`c(username)'"=="wb520324" { 											// Eva's WB computer 
-	global main "C:\Users\wb520324\Dropbox\Regressivity_VAT/Stata"
-	}
-	
-	else if "`c(username)'"=="evadavoine" { 									// Eva's personal laptop
-	global main "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata"
-	}	
-	
+
 ***********************
 * SCENARIO CONSIDERED *
 ***********************	
@@ -123,14 +103,6 @@
 		  gini.R 								// Creates Figure 8  
 		  Gini_output_tableA7					// Creates Table A7
 
-	** Auxiliary and Unused in paper
-		Calibrations_results_full_rate_diff
-		Informality_Engel_curves_loglog.do			// Runs the Engel curves on a log log specification (to be developed to have standard tests?)
-		Engel_curves_Exploration.do 				// Use the deciles spending on the different sectors and build the formal/informal IEC by good 		 
-				
-	
-		
-			
 		
 		
 		
