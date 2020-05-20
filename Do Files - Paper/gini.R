@@ -16,13 +16,6 @@ library("readxl")
 library(metafor)
 library(forestplot)
 
-#################
-## DIRECTORIES ##
-#################
- main <- "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata/tables"
-# main <- "/Users/pierrebachas/Dropbox/Regressivity_VAT/Stata/tables"
-
-
 ##########
 ## DATA ##
 ##########
