@@ -15,11 +15,11 @@ Notes on the Data
 The data comes from nationally representative income and expenditure surveys from 31 countries. 
 Some of these micro-data are open access and can be obtained from the statistical agency of each countries, and others are restricted access. We list below the country names, survey acronyms and years for anyone interested in replicating our analysis. 
 
-| First Header  | Second Header |
+| Country name  | Survey        | Year 
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-    Country name	Survey	Year	Source
+| Benin         | Content Cell  |
+| Bolivia       | Content Cell  |
+   
 -  Benin	      EMICOV	2015	World Bank
 -  Bolivia	      ECH	    2004	Stat. Office
 -  Brazil	      POF	    2009	Stat. Office
