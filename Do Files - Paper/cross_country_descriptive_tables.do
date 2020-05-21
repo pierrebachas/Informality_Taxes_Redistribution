@@ -5,32 +5,6 @@
 					*************************************************************************
 	
 	
-***************
-* DIRECTORIES *
-***************
-di "`c(username)'"
- if "`c(username)'"=="wb446741" { 											    // Pierre's WB computer 
-	global main "C:\Users\wb446741\Dropbox\Regressivity_VAT\Stata"
-	}
-	else if "`c(username)'"=="pierrebachas" { 									// Pierre's personal laptop
-	global main "/Users/pierrebachas/Dropbox/Regressivity_VAT/Stata"
-	}	
- else if "`c(username)'"=="elieg" { 											// Elie's laptop
-	global main "C:\Users\elieg\Dropbox\Regressivity_VAT\Stata"
-	}
- else if "`c(username)'"=="wb520324" { 											// Eva's WB computer 
-	global main "C:\Users\wb520324\Dropbox\Regressivity_VAT\Stata"
-	}
-	
-	else if "`c(username)'"=="evadavoine" { 									// Eva's personal laptop
-	global main "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata"
-	}	
-
-	
-	qui include "$main/dofiles/server_header.doh" 								// Runs a file defining the globals for all subpath	
-	display "`c(current_date)' `c(current_time)'"
-		
-	
 ******************	
 * DATA PREPARATON*
 ******************
