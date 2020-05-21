@@ -6,15 +6,11 @@
 * Data Note: Data is from INEGI_import_tables_25_10_2018 on the Number of personnel by store stype, 
 * merged dataset CPI-CE (January 2014)
 
-	cd "/Users/pierrebachas/Dropbox/Mexico_Border_Tax/INEGI/FirmSize_Censusbased/Graph_Dec18/"
-
 	import excel "data.xlsx", clear firstrow sheet("Sheet2") 
 
 	drop if data_source == "census" 
 	replace store = "Street stall" if store == "Markets, Street" 
-	
-	// To correct better in the future: for now take specialzied stores as an average of mini-markets and specialized stores (?) 
-	
+		
 	
 	local x = 0.2*VAT_payer_mean[3] + 0.8*VAT_payer_mean[4] 
 	display `x'
