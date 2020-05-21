@@ -285,27 +285,4 @@
 		postclose regressions_output		
 	
 	
-		********************************************
-		* 		ENGEL CURVES SLOPES 
-		********************************************		
-		/* 
-		local hhld_controls hh_size head_sex head_age 
-		reg total_exp_21 log_income_pp `hhld_controls' if log_income_pp>= `p5' & log_income_pp <= `p95' [aw = hh_weight] , robust	
-			
 		
-		local hhld_controls hh_size head_sex head_age 
-		
-		** Linear: 
-		reg temp_weight_2 log_income_pp `hhld_controls' if tag_2 == 1 & COICOP_2dig == 1 [aw = hh_weight] , robust
-		reg temp_weight_2 log_income_pp `hhld_controls' if tag_2 == 1 & COICOP_2dig == 1 & log_income_pp>= `p5' & log_income_pp <= `p95' [aw = hh_weight] , robust
-		reg temp_weight_2 log_income_pp `hhld_controls' if tag_2 == 1 & COICOP_2dig == 1 & log_income_pp>= `p10' & log_income_pp <= `p90' [aw = hh_weight] , robust		
-		
-		** Quadratic
-		gen log_income_pp_sq = log_income_pp^2		
-
-		reg temp_weight_2 log_income_pp log_income_pp_sq `hhld_controls' if tag_2 == 1 & COICOP_2dig == 1  [aw = hh_weight] , robust			
-		reg temp_weight_2 log_income_pp log_income_pp_sq `hhld_controls' if tag_2 == 1 & COICOP_2dig == 1 & log_income_pp>= `p5' & log_income_pp <= `p95'  [aw = hh_weight] , robust	
-		reg temp_weight_2 log_income_pp log_income_pp_sq `hhld_controls' if tag_2 == 1 & COICOP_2dig == 1 & log_income_pp>= `p10' & log_income_pp <= `p90'  [aw = hh_weight] , robust		
-		*/ 	
-		
-
