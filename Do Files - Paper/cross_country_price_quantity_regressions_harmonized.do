@@ -100,21 +100,14 @@
 	// and strictly positive sd of truncated distribution
 	
 
-	* For things to be clearer, we set to 0 test when the truncated distribution is unimodal
-*	replace one_sd = 0 if one_sd == . & triplet_id_truncated_sd == 0 & usable_triplet_id != .
-*	replace halved_sd = 0 if halved_sd == . & triplet_id_truncated_sd == 0 & usable_triplet_id != .
-*	replace third_sd = 0 if third_sd == . & triplet_id_truncated_sd == 0 & usable_triplet_id != .
-
-
+	
 //	save "$main/waste/$country_fullname/${country_code}_unit_values_with_tests_results_${geolevel_reg}.dta", replace
 	
 	* Label variables
 	*****************************
 	label variable Formal_Informal_0_1 "Formality level"
 	label variable unit "Unit of measure"
-*	label variable one_sd "Prob (multimodality) with par = 1*sd"
-*	label variable halved_sd "Prob (multimodality) with par = 1/2*sd"
-*	label variable third_sd "Prob (multimodality) with par = 1/3*sd"
+
 
 	
 	* Generate variables for regressions
@@ -261,23 +254,7 @@
 	* create folder "${country_fullname}_geo${geolevel_reg}" in tables>price_quantity
 	local savefile "$main/tables/price_quantity/${country_fullname}_geo${geolevel_reg}/${country_fullname}_regressions_comparing_specifications_`retailer_reg'.xls"
 
-* Regression with all multimodality tests values
-*************************************************
 
-* with unspecified and all multimodality tests values	 
-*			reghdfe log_unit_value ib1.`retailer_reg' [aweight=hh_weight] , ///
-*				vce(cluster geo$geolevel_reg) absorb(triplet_id)			
-*			local nb_fixed_effects = e(df_a)														
-*			local notes addtext(Triplets with more than 16 obs only, YES, ///
-*							Triplet fixed effects, YES, ///
-*							Nb of triplets, `nb_fixed_effects', ///
-*							Household Weights, YES, ///
-*							Unspecified excluded, YES, ///
-*							High multimodality probability excluded, NO, ///
-*							Minimum nb of obs per triplet, NO, ///
-*							Geographical level, $geolevel_reg)
-*			outreg2 using `savefile', dta replace ctitle(Baseline with unspecified) `notes' label
-*
 
 
 
@@ -300,24 +277,7 @@
 			post regressions_output_price ("`country'") (`b') (`se') (`nb_purchases')  (`nb_geo_clusters') (`nb_product_code') (`nb_fixed_effects') 
 			
 
-* Regression with one_sd = 0
-******************************
-*	* without unspecified
-* 		reghdfe log_unit_value i.`retailer_reg' [aweight=hh_weight] ///
-*				if one_sd == 0 & Formal_Informal_0_1 != 9, ///
-*				vce(robust) absorb(triplet_id)	
-*				
-*			local nb_fixed_effects = e(df_a)
-*			local notes addtext(Triplets with more than 16 obs only, YES, ///
-*							Triplet fixed effects, YES, ///
-*							Nb of triplets, `nb_fixed_effects', ///
-*							Household Weights, YES, ///
-*							Unspecified excluded, YES, ///
-*							High multimodality probability excluded, YES, ///
-*							Minimum nb of obs per triplet, NO, ///
-*							Geographical level, $geolevel_reg)
-*			outreg2 using `savefile', append ctitle(Only if 1sd test equals 0 and no unspecified) `notes' label
-*
+
 		
 * Regression with winsorized unit values 
 *******************************************
@@ -360,29 +320,6 @@
 			outreg2 using `savefile', dta append ctitle(Winsorization at 5% and bounded zscore) `notes' label
 
 	
-* Regression with one_sd = 0 and with > 50 obs
-******************************
-*		foreach h of numlist 50(50)200 {
-*			local threshold = `h'
-*				count if triplet_id_count >= `threshold' 
-*				local nb_obs_left = r(N)
-*				if `nb_obs_left' > 15 {
-*			* without unspecified 
-*				reghdfe log_unit_value i.`retailer_reg' [aweight=hh_weight] ///
-*					if one_sd == 0 & Formal_Informal_0_1 != 9 & triplet_id_count >= `threshold', ///
-*					vce(robust) absorb(triplet_id)	
-*					local nb_fixed_effects = e(df_a)
-*					local notes addtext(Triplets with more than 16 obs only, YES, ///
-*									Triplet fixed effects, YES, ///
-*									Nb of triplets, `nb_fixed_effects', ///
-*									Household Weights, YES, ///
-*									Unspecified excluded, YES, ///
-*									High multimodality probability excluded, YES, ///
-*									Minimum nb of obs per triplet, `threshold', ///
-*								Geographical level, $geolevel_reg)
-*					outreg2 using `savefile', append ctitle(Minimum nb of obs per triplet) `notes' label
-*				}
-*		 }
 
 } // end of retailer_reg loop
 }	
@@ -435,24 +372,7 @@ postclose regressions_output_price
 			outreg2 using `savefile', dta append ctitle(Baseline No unspecified) `notes' label
 		
 	
-* Regression with one_sd = 0
-******************************
-*	* without unspecified
-* 		reghdfe log_unit_value i.`retailer_reg' [aweight=hh_weight] ///
-*				if one_sd == 0 & Formal_Informal_0_1 != 9, ///
-*				vce(robust) absorb(triplet_id)	
-*				
-*			local nb_fixed_effects = e(df_a)
-*			local notes addtext(Triplets with more than 16 obs only, YES, ///
-*							Triplet fixed effects, YES, ///
-*							Nb of triplets, `nb_fixed_effects', ///
-*							Household Weights, YES, ///
-*							Unspecified excluded, YES, ///
-*							High multimodality probability excluded, YES, ///
-*							Minimum nb of obs per triplet, NO, ///
-*							Geographical level, $geolevel_reg)
-*			outreg2 using `savefile', append ctitle(Only if 1sd test equals 0 and no unspecified) `notes' label
-*
+
 		
 * Regression with winsorized unit values 
 *******************************************
@@ -488,29 +408,7 @@ postclose regressions_output_price
 			outreg2 using `savefile', dta append ctitle(Winsorization at 5% and bounded zscore) `notes' label
 
 	
-* Regression with one_sd = 0 and with > 50 obs
-******************************
-*		foreach h of numlist 50(50)200 {
-*			local threshold = `h'
-*				count if triplet_id_count >= `threshold' 
-*				local nb_obs_left = r(N)
-*				if `nb_obs_left' > 15 {
-*			* without unspecified 
-*				reghdfe log_unit_value i.`retailer_reg' [aweight=hh_weight] ///
-*					if one_sd == 0 & Formal_Informal_0_1 != 9 & triplet_id_count >= `threshold', ///
-*					vce(robust) absorb(triplet_id)	
-*					local nb_fixed_effects = e(df_a)
-*					local notes addtext(Triplets with more than 16 obs only, YES, ///
-*									Triplet fixed effects, YES, ///
-*									Nb of triplets, `nb_fixed_effects', ///
-*									Household Weights, YES, ///
-*									Unspecified excluded, YES, ///
-*									High multimodality probability excluded, YES, ///
-*									Minimum nb of obs per triplet, `threshold', ///
-*								Geographical level, $geolevel_reg)
-*					outreg2 using `savefile', append ctitle(Minimum nb of obs per triplet) `notes' label
-*				}
-*		 }
+
 
 } // end of retailer_reg loop
 	
