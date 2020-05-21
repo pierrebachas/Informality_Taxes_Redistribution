@@ -1,4 +1,3 @@
-stop! // to prevent mistakingly running everything
 
 					*************************************
 					* 			Main DO FILE			*
@@ -6,20 +5,6 @@ stop! // to prevent mistakingly running everything
 					*		 CROSS-COUNTRY GRAPH		*
 					*************************************
 
-***************
-* DIRECTORIES *
-***************
-
-if "`c(username)'"=="WB446741" { 											// Pierre's WB computer 
-	global main "C:\Users\wb446741\Dropbox\Regressivity_VAT\Stata"
-	}
-else if "`c(username)'"=="pierrebachas" { 									// Pierre's personal laptop
-	global main "/Users/pierrebachas/Dropbox/Regressivity_VAT/Stata"
-	}	
-	else if "`c(username)'"=="evadavoine" { 									// Eva's personal laptop
-	global main "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata"
-	}	
-	
 
 **************
 ** Globals  **
