@@ -25,14 +25,7 @@
 // 1. Graph combining deciles: 3 or 4 income groups combined
 **************************************************************	
 	
-    // To be Done
-	// @Roxanne
-	// label values and variables
-	// Copy look on Figure 4 of Bick et al AER 
-	// @Pierre
-	// Decide if we do 3 or 4 groups 
-	// Output from the micro data with the levels, right now everything is relative to the top decile
-	
+   
 	*********************************************	
 	// 1.1 Load Data 
 	*********************************************		
@@ -75,10 +68,7 @@
 	gen log_PPP_current 	 = log(PPP_current)			// Some missing data 	
 
 	** Group by Income levels // for now just doing even 6-6-6 to give 18 countries equal bins
-	*** Two options: (1) Equal sized groups, (2) World Bank income groups (https://blogs.worldbank.org/opendata/new-country-classifications-income-level-2019-2020)
-	*** middle-low: 	1,026 - 3,9953   upper-middle 3,996 - 12,375 to 
-	
-	ta log_PPP_current
+	_current
 	
 	local option1 = 1
 	local option2 = 1 - `option1' 
