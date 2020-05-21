@@ -5,37 +5,6 @@
 					*************************************	
 
 
-
-***************
-* DIRECTORIES *
-***************
-
-if "`c(username)'"=="Varo" { 													// Alvaro's laptop
-	global main "/Users/Varo/Dropbox/Regressivity_VAT/Stata" 		
-}	
- else if "`c(username)'"=="WB446741" { 											// Pierre's WB computer 
-	global main "C:\Users\wb446741\Dropbox\Regressivity_VAT\Stata"
-	}
-else if "`c(username)'"=="pierrebachas" { 									// Pierre's personal laptop
-	global main "/Users/pierrebachas/Dropbox/Regressivity_VAT/Stata"
-	}	
-
-	else if "`c(username)'"=="wb520324" { 											// Eva's WB computer 
-	global main "C:\Users\wb520324\Dropbox\Regressivity_VAT/Stata"
-	}
-	
-	else if "`c(username)'"=="evadavoine" { 									// Eva's personal laptop
-	global main "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata"
-	}	
-		
-	
-	
-	qui include "$main/dofiles/server_header.doh" 								// Runs a file defining the globals for all subpath
-	display "`c(current_date)' `c(current_time)'"
-
-	
-
-	
 	
 ***************************
 * CONTROL CENTER *
@@ -71,7 +40,7 @@ if `shape_file' {
 	replace sample=2 if m_gcd_sample==2
 	replace sample=3 if  m_gcd_sample==1
 	
-	*Code for map slides Princeton 
+	*Code for map 
 	
 	gen core_sample= (m_gcd_sample==1 | m_gcd_sample==3)
 	
