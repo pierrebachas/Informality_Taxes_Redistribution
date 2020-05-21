@@ -3,7 +3,6 @@
 **PRELIMINARIES**
 ***************************************************
 
-	** Note replace the parameters from optimal_tax below with the locals from the program 
 
 	clear all 
 	set more off
