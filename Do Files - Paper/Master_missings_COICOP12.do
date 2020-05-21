@@ -204,34 +204,6 @@
 		
 		qui count if hh_weight != .					
 
-/*		*********************************************************
-		* STATISTICS FOR OUTPUT
-		*********************************************************					
-		**  Windsorize at the top the total consumption and total informal consumption, then by categories ratios have to be updated 
-		** (Note the categories then wont add up, so we do an adjustment which is to reduce for each COICOP by the percentage reduction, just test for now
-			
-			qui sum total_exp [aw= hh_weight] , d
-			local p99 = `r(p99)'
-			gen ratio_wins = `r(p99)' / total_exp 
-			replace ratio_wins = 1 if ratio_wins >= 1
-		
-			replace total_exp = total_exp * ratio_wins 
-			replace total_exp_informal = total_exp_informal * ratio_wins 
-			
-		forvalues c = 1(1)12 { 
-			replace exp_coicop_tot_`c' = exp_coicop_tot_`c' * ratio_wins 
-			replace exp_coicop_inf_`c' = exp_coicop_inf_`c' * ratio_wins 
-			gen exp_coicop_for_`c' = exp_coicop_tot_`c' - exp_coicop_inf_`c'
-			}
-				
-		** generate the share of good's consumption at individual level to obtain the Engel curves 
-		
-		forvalues c = 1(1)12 { 		
-			gen s_coicop_A_`c' =  exp_coicop_tot_`c' / total_exp 
-			gen s_coicop_I_`c' =  exp_coicop_inf_`c' / total_exp 
-			gen s_coicop_F_`c' =  exp_coicop_for_`c' / total_exp 
-			} 
-*/		
 		*********************************************************
 		* GENERATE THE OUTPUT
 		*********************************************************			
@@ -279,38 +251,7 @@
 			
 			}
 
-/*		*** Betas: slope of Engel curve that is share over total exp 	
-		* Windsoriwing top and bottom income outliers: 
-		local low = 1						// Set percentile to windsorize
-		local high = 100 - `low'
-		
-		_pctile log_income_pp [aw= hh_weight], p(`low')  
-		return list
-		local p_low = `r(r1)'
-		_pctile log_income_pp [aw= hh_weight], p(`high') 
-		return list
-		local p_high = `r(r1)'	
-		
-		replace log_income_pp = `p_low' if log_income_pp < `p_low'	& log_income_pp != .
-		replace log_income_pp = `p_high' if log_income_pp > `p_high' & log_income_pp != .		
-	
-		local it = 2		
-		forvalues c = 1(1)12 { 
-		foreach var in A F I { 
-			qui reg s_coicop_`var'_`c' log_income_pp [aweight=hh_weight] , vce(robust)	
-			local b`var'`c' = _b[log_income_pp]
-			// display `b`var'`c''
-			local se`var'`c' = _se[log_income_pp]
-			// display `se`var'`c''
-			}
-						
-			post regressions ("$country_code") ($year) (`it') (`c') (`bA`c'') (`seA`c'') (`bF`c'') (`seF`c'') (`bI`c'') (`seI`c'')			
-			} 	// Close loop 
-			
-			display "$country_code"	
-			
-		} 				// End of Cross Country Loop 
-*/
+
 		cap log close 
 		postclose regressions	
 		
