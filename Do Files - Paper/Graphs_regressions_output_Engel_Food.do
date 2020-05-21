@@ -12,15 +12,6 @@ SUMMARY:
 		2.1 Summary Statistics
 		2.2 Coefficients from regressions
 	3. Analysis of R_2 across regressions
-		
-
-ISSUES:
-
-(1) Issue with survey_bloc min and R2 for PNG in particular 
-(2) Idea of a nice graph: 
-x-axis ordering by country gdp
-y-axis box plot which shows, median, average, interquartile
-and p95 p5 --> This contains a lot of the interesting info!
 	
 	*/
 **************************************************************************										
