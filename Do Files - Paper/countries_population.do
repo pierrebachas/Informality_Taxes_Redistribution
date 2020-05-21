@@ -1,41 +1,18 @@
-***************
-* DIRECTORIES *
-***************
-
-if "`c(username)'"=="Varo" { 													// Alvaro's laptop
-	global main "/Users/Varo/Dropbox/Regressivity_VAT/Stata" 		
-}	
- else if "`c(username)'"=="WB446741" { 											// Pierre's WB computer 
-	global main "C:\Users\wb446741\Dropbox\Regressivity_VAT\Stata"
-	}
-else if "`c(username)'"=="pierrebachas" { 									// Pierre's personal laptop
-	global main "/Users/pierrebachas/Dropbox/Regressivity_VAT/Stata"
-	}	
- else if "`c(username)'"=="elieg" { 											// Elie's laptop
-	global main "C:\Users\elieg\Dropbox\Regressivity_VAT\Stata"
-}
- else if "`c(username)'"=="wb520324" { 											// Eva's WB computer 
-	global main "C:\Users\wb520324\Dropbox\Regressivity_VAT\Stata"
-	}
-	
-	else if "`c(username)'"=="evadavoine" { 									// Eva's personal laptop
-	global main "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata"
-	}	
-	
-	
-	
-import excel "C:\Users\wb520324\Dropbox\Regressivity_VAT\Stata\tables\Global_Consumption_Database\Countries_population.xlsx", sheet("Sheet10") firstrow clear
+***************************************************
+* This files prepare a country population dataset *
+***************************************************
+import excel "$main\tables\Global_Consumption_Database\Countries_population.xlsx", sheet("Sheet10") firstrow clear
 drop A
 ren B country_fullname
 ren C pop2018
 drop GCD 
 gen GCD=.
 
-merge 1:1 country_fullname using "C:\Users\wb520324\Dropbox\Regressivity_VAT\Stata\tables\Global_Consumption_Database\code_country_correspondance.dta"
+merge 1:1 country_fullname using "$main\tables\Global_Consumption_Database\code_country_correspondance.dta"
 keep if _merge==3
 drop _merge
 ren country_3let country
-merge 1:1 country using "C:\Users\wb520324\Dropbox\Regressivity_VAT\Stata\data\Global_Consumption_Database\results_excluding_hhage_children\decile_stat_excluding_hhage_children_mean_exp.dta"
+merge 1:1 country using "$main\data\Global_Consumption_Database\results_excluding_hhage_children\decile_stat_excluding_hhage_children_mean_exp.dta"
 replace country_fullname="Kosovo" if country=="KSV"
 replace country_fullname="South Sudan" if country=="SSD"
 replace pop2018="1920079"  if country=="KSV"
@@ -46,7 +23,7 @@ replace GCD="No" if _merge==1
 destring pop2018, replace
 gen pop2018_sort=-pop2018
 sort pop2018_sort
-export excel using "C:\Users\wb520324\Dropbox\Regressivity_VAT\Stata\tables\Global_Consumption_Database\country_pop.xls" , replace
+export excel using "$maintables\Global_Consumption_Database\country_pop.xls" , replace
 
 
 
@@ -115,7 +92,7 @@ sleep 500
 
 * % du monde 56,2%
 
-import excel using "C:\Users\wb520324\Dropbox\Regressivity_VAT\Stata\tables\Global_Consumption_Database\country_pop.xls" , clear firstrow
+import excel using "$main\tables\Global_Consumption_Database\country_pop.xls" , clear firstrow
 
 egen GCD_pop=sum(pop2018) if GCD=="Yes"
 egen total_pop=sum(pop2018)
