@@ -5,7 +5,7 @@ by Pierre Bachas, Lucie Gadenne and Anders Jensen.
 -----------------------------------------------------------------------------------------------------
 This repository contains three folders:
 
-Do files - Paper: These files allow for a full replication of the paper once each country's expenditure survey data has been obtained (the master.do file details which do file correspond to which graph or table). This file also contains a fex excel files that are necessary to run the dofiles.
+Do files - Paper: These files allow for a full replication of the paper once each country's expenditure survey data has been obtained (the master.do file details which do file correspond to which graph or table). This file also contains a few excel files that are necessary to run the dofiles.
 Do files - Country Codes : These files allow to replicate the analysis we conducted for each country from the raw data. The same methodology is used for each country, with a few exceptions listed and detailed below.
 Crosswalk : These files are needed for the analysis of some countries, which product codes where not following the COICOP classification and/or when the type of retailers classification was too detailed.
 
