@@ -4,9 +4,6 @@
 					* 			Main DO FILE			*
 					* 	      MOZAMBIQUE 2009			*
 					*************************************
-
-
-
 ***************
 * DIRECTORIES *
 ***************
@@ -348,7 +345,7 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 	*agg_value_on_period 
 	gen agg_value_on_period = amount_paid 
 
-	destring hhid, replace2.2
+	destring hhid, replace
 	
 	gen module_tracker="Education"
 	tempfile edu
@@ -443,8 +440,8 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 	
 	#delim ; // create the label
 	label define TOR_original_label 
-1 "loja" 2 "mercado" 3 "mercado informal"
-4 "outro" 5 "auto produção" 6 "transferências" ;
+	1 "loja" 2 "mercado" 3 "mercado informal"
+	4 "outro" 5 "auto produção" 6 "transferências" ;
 	#delim cr
 	label list TOR_original_label
 	label values TOR_original TOR_original_label // assign it
@@ -526,6 +523,17 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 	ta TOR_original, m
 	append using `all_expenses_no_durables'
 	
+	
+	
+	label list TOR_original_label
+	label values TOR_original TOR_original_label // assign it
+	ta TOR_original
+
+	drop TOR_original_name
+	decode TOR_original, gen(TOR_original_name)
+	ta TOR_original_name
+
+	
 	save "$main/waste/$country_fullname/${country_code}_all_lines_raw.dta" , replace
 
 
@@ -594,7 +602,7 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 	set more off
 	label list
 	capture label drop TOR_original_label
-	collapse (sum) agg_value_on_period, by (TOR_original)
+	collapse (sum) agg_value_on_period, by (TOR_original TOR_original_name)
 	rename agg_value_on_period expenses_value_aggregate
 	egen total_exp = sum(expenses_value_aggregate)  
 	gen pct_expenses = expenses_value_aggregate / total_exp 
@@ -604,8 +612,8 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 	*We assign the crosswalk (COUNTRY SPECIFIC !)
 	gen detailed_classification=1 if inlist(TOR_original,6,5)
 	replace detailed_classification=2 if inlist(TOR_original,2,3)
-	replace detailed_classification=4 if inlist(TOR_original,1)
-	replace detailed_classification=99 if inlist(TOR_original,4,9,999)
+	replace detailed_classification=4 if inlist(TOR_original,1,4)
+	replace detailed_classification=99 if inlist(TOR_original,9,999)
 
 
 
@@ -670,9 +678,8 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 	drop COICOP_4dig
 	ren COICOP_Name4 COICOP_4dig
 	
-	
 	*We save the database with all expenditures for the price/unit analysis
-	save "$main/proc/$country_fullname/${country_code}_exp_full_db.dta" 
+	save "$main/proc/$country_fullname/${country_code}_exp_full_db.dta" , replace
 
 	*We create the final database at the COICOP_4dig level of analysis
 	collapse (sum) agg_value_on_period, by(hhid housing TOR_original COICOP_4dig COICOP_3dig COICOP_2dig  detailed_classification) 

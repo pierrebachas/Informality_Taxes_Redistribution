@@ -427,7 +427,7 @@ income and weights
 	merge 1:m TOR_original using "$main/waste/$country_fullname/${country_code}_all_lines_raw.dta" , nogen
 
 	*We keep all household expenditures and relevant variables
-    keep hhid brazil_2dig brazil_3dig brazil_4dig TOR_original TOR_original_name agg_value_on_period  detailed_classification TOR_original  pct_expenses housing
+    keep hhid coicop_2dig brazil_2dig brazil_3dig brazil_4dig TOR_original TOR_original_name agg_value_on_period  detailed_classification TOR_original  pct_expenses housing
 	order hhid, first
 	sort hhid
 
@@ -443,7 +443,14 @@ income and weights
 	ren brazil_3dig product_code_3dig
 	ren brazil_4dig product_code_4dig
 	
-	gen COICOP_2dig=product_code_2dig
+	gen COICOP_2dig=coicop_2dig
+	
+	merge m:1 COICOP_2dig using "$main/proc/COICOP_label_2dig.dta"
+	drop if _merge == 2
+	drop _merge
+	drop COICOP_2dig
+	ren COICOP_Name2 COICOP_2dig
+	
 	
 	*We save the database with all expenditures for the price/unit analysis
 	save "$main/proc/$country_fullname/${country_code}_exp_full_db.dta" , replace

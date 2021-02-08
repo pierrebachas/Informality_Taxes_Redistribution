@@ -25,7 +25,6 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 ********************************************************************************
 ********************************************************************************
 
-	
 	global country_fullname "Eswatini2010"
 	global country_code "SZ"
 	
@@ -331,11 +330,11 @@ SWZ2010_Poverty: household size, sample weight
 	ta TOR_original
 	#delim ; // create the label
 	label define TOR_original_label 
-1 "Supermarket" 2 "Grocery" 3 "Butchery"
-4 "Hardware store" 5 "Market" 6 "Street Vendor"
-7 "Book Store" 8 "Spaza" 9 "Clothes/Footwear/Linen"
-10 "Self production" 11 "Gifts/transfers" 
-12 "Missing" 16 "Other" ;
+	1 "Supermarket" 2 "Grocery" 3 "Butchery"
+	4 "Hardware store" 5 "Market" 6 "Street Vendor"
+	7 "Book Store" 8 "Spaza" 9 "Clothes/Footwear/Linen"
+	10 "Self production" 11 "Gifts/transfers" 
+	12 "Missing" 16 "Other" ;
 	#delim cr
 	label list TOR_original_label
 	label values TOR_original TOR_original_label // assign it
@@ -457,9 +456,6 @@ SWZ2010_Poverty: household size, sample weight
 	replace detailed_classification=5 if inlist(TOR_original,1)
 	replace detailed_classification=99 if inlist(TOR_original,12,16)
 
-
-
-
 	export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")
 	*Note: This table is exported to keep track of the crosswalk between the original places of purchases and our classification 
 	
@@ -473,7 +469,7 @@ SWZ2010_Poverty: household size, sample weight
 	#delim cr
 	label list detailed_classification_label
 	label values detailed_classification detailed_classification_label // assign it
-	ta detailed_classification
+	ta detailed_classification	
 	
 	*We merge with expenditures dataset
 	merge 1:m TOR_original using  "$main/waste/$country_fullname/${country_code}_all_lines_COICOP_crosswalk.dta"

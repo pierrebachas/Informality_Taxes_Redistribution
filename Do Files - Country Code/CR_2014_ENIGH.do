@@ -186,10 +186,11 @@ Individual level general statistics, one line per person.
 	destring TOR_original, force replace
 	ta TOR_original
 
+	decode TOR_original , gen(TOR_original_name)
 
 	
 	*We keep all household expenditures and relevant variables
-	keep hhid product_code TOR_original   quantity  amount_paid agg_value_on_period   coicop_2dig housing
+	keep hhid product_code TOR_original TOR_original_name   quantity  amount_paid agg_value_on_period   coicop_2dig housing
 	order hhid, first
 	sort hhid
 	save "$main/waste/$country_fullname/${country_code}_all_lines_raw.dta", replace
@@ -260,7 +261,7 @@ Individual level general statistics, one line per person.
 	set more off
 	label list
 	capture label drop TOR_original_label
-	collapse (sum) agg_value_on_period, by (TOR_original)
+	collapse (sum) agg_value_on_period, by (TOR_original TOR_original_name)
 	rename agg_value_on_period expenses_value_aggregate
 	egen total_exp = sum(expenses_value_aggregate)  
 	gen pct_expenses = expenses_value_aggregate / total_exp 

@@ -4,8 +4,7 @@
 					* 			Main DO FILE			*
 					* 	      SAO TOME & PRINCIPE 2010	*
 					*************************************
-
-
+ 
 
 ***************
 * DIRECTORIES *
@@ -388,17 +387,15 @@ forval i=1/`n_models' {
  
 	
 	*We assign the crosswalk (COUNTRY SPECIFIC !)
-	gen detailed_classification=1 if inlist(TOR_original,2,20,4,3)
+	gen detailed_classification=1 if inlist(TOR_original,2,20,4,3,14,21,17)
 	replace detailed_classification=2 if inlist(TOR_original,8,5)
 	replace detailed_classification=3 if inlist(TOR_original,6)
 	replace detailed_classification=4 if inlist(TOR_original,11)
 	replace detailed_classification=5 if inlist(TOR_original,9,10,19)
-	replace detailed_classification=6 if inlist(TOR_original,18,16,14,15)
+	replace detailed_classification=6 if inlist(TOR_original,18,16,15)
 	replace detailed_classification=7 if inlist(TOR_original,13,7)
 	replace detailed_classification=8 if inlist(TOR_original,12)
-	replace detailed_classification=99 if inlist(TOR_original,21,17,22)
-
-
+	replace detailed_classification=99 if inlist(TOR_original,22)
 
 
 	export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")

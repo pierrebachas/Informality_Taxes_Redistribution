@@ -29,6 +29,14 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 	global country_fullname "Bolivia2004"
 	global country_code "BO"
 	
+/*	capture : which tabm
+if (_rc) {
+    display as result in smcl `"Please install package {it:tab_chi} from SSC in order to run this do-file;"' _newline ///
+        `"you can do so by clicking this link: {stata "ssc install tab_chi":auto-install tab_chi}"'
+    exit 199
+}
+*/
+	
 /* SUMMARY:
    Step 0:  Data overview
    Step 1:  Prepare covariates at the household level
@@ -201,7 +209,7 @@ Product codes do not seem to follow COICOP, need crosswalk?
 	7 "vendedor ambulante" 8 "hotel, bar, restaurante" 9 "utilidades"
 	10 "transporte" 11 "taller" 
 	12 "supermercado" 13 "tienda de conveniencia" 14 "cantina" 15 "institución de salud" 16 "instituto educativo"
-	17 "recreación" 18 "internet" 19 "institución religiosa" 20 "instituciones financieras" 21 "missing" 22 "de un hogar / transferencia" 23 "comunicación" 24 "servicio individual";
+	17 "recreación" 18 "internet" 19 "institución religiosa" 20 "instituciones financieras" 21 "missing" 22 "de un hogar" 23 "comunicación" 24 "servicio individual";
 	#delim cr
 	label list TOR_original_label
 	label values TOR_original TOR_original_label // assign it
@@ -228,27 +236,8 @@ Product codes do not seem to follow COICOP, need crosswalk?
 * Step 2.2: Product crosswalk if product codes are not COICOP * 
 ***************************************************************
 
-	use "$main/waste/$country_fullname/${country_code}_all_lines_raw_before_crosswalk.dta", clear
 	
-	gen str_product_code = product_code
-	
-	duplicates report str_product_code 
-	duplicates drop str_product_code, force // 999 unique products
-	export excel product_code_label str_product_code using "$main/tables/$country_fullname/${country_code}_productcode_crosswalk.xlsx", replace
-	*by hand crosswalk - copy cells from the file above into the file called product_code_crosswalk_2dig 
-	*and then make an additional column with the 2dig-level crosswalk
-	
-	
-	* Full Crosswalk
-	use "$main/waste/$country_fullname/${country_code}_all_lines_raw_before_crosswalk.dta", clear
-	
-	sort Estr2dig Estr3dig Estr4dig
-	egen tag_COICOP_4dig = tag(Estr4dig)
-	keep Estr2dig Estr3dig Estr4dig Estr2dig_name Estr3dig_name  Estr4dig_name 
-	export excel using "$main/tables/$country_fullname/${country_code}BO_ECH_crosswalk_COICOP.xlsx", replace firstrow(variables)
-	
-
-	import excel using "$main/tables/$country_fullname/${country_code}_productcode_raw_data_Estr4dig_level_crosswalk.xlsx", clear firstrow
+	import excel using "$main/tables/$country_fullname/${country_code}_ECH_crosswalk_COICOP.xlsx", clear firstrow
 	
 	drop Estr2dig Estr3dig Estr2dig_name Estr3dig_name Estr4dig
 	tostring COICOP_2dig, replace

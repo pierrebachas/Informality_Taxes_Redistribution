@@ -1,12 +1,8 @@
 
-
 					*************************************
 					* 			Main DO FILE			*
-					* 	        BURUNDI 2014 			*
+					* 	      	PARAGUAY 2011			*
 					*************************************
-
-* Template 
-
 
 ***************
 * DIRECTORIES *
@@ -15,9 +11,9 @@
 if "`c(username)'"=="wb520324" { 													// Eva's WB computer 
 	global main "C:/Users/wb520324/Dropbox/Regressivity_VAT/Stata"		
 }	
-	else if "`c(username)'"=="evadavoine" { 									// Eva's personal laptop
-	global main "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata"
-	}	
+ else if "`c(username)'"=="" { 										
+	global main ""
+	}
 	
 	qui include "$main/dofiles/server_header.doh" 								// Runs a file defining the globals for all subpath
 	display "`c(current_date)' `c(current_time)'"
@@ -27,8 +23,8 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 ********************************************************************************
 
 	
-	global country_fullname "Burundi2014"
-	global country_code "BI"
+	global country_fullname "Paraguay2011"
+	global country_code "PY"
 	
 /* SUMMARY:
    Step 0:  Data overview
@@ -49,69 +45,85 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 *****************************	
 	
 /*
-	Fichier_individu.dta
-Individual level general statistics, one line per individual
-
-	Fichier_menage_newer.dta
-Household level general statistics, one line per household
-
-	poverty_final_version_13.dta
-This file has some interesting questions on access, distance to market
-Also ownership of bike, car
-
-	CQ03.dta - CQ26.dta 
-All expenses files, vary in product codes and level of detail. Need to reconstruct HHID.
-Asks price, quantity, reason for place of purchase, and country of production.
+*Weight variable is called fexp_cen2010 [the expansion factor]
+1. Datos de la vivienda y del Hogar reg01.dta: Contains info at the households level
+2. Datos de la poblacion reg02t.dta: Contains info at the individual level
+3. Agregado a nivel de transaccion  agregado.dta: daily monetary and non-monetary expenses in food, beverages, and tobacco. 
 */
 
-
+*Il reste a coder le auto produccion et regarder si meilleurevaleur pour aggreagt total
+*envoyer a pierre le IEC + lui dire que jai les données enterprise
 *****************************************************
 * Step 1: Prepare covariates at the household level *
 *****************************************************
 
-* [Output = Note in Masterfile + dataset _household_cov_original to complete later]
-
+	clear
+	set more off
+	use "$main/data/$country_fullname/Datos de la poblacion reg02t.dta", clear
+	
+	*hhid
+	gen str6 str_upm = substr(string(upm,"%03.0f"), 1,3) 
+	gen str6 str_nvivi = substr(string(nvivi,"%03.0f"), 1,3)
+	gen str6 str_nhoga = substr(string(nhoga,"%02.0f"), 1,2)
+	egen hhid = concat(str_upm str_nvivi str_nhoga ) //5417
+	
+	drop if p02 != 1 //keep only household heads and single-person households
+	duplicates drop hhid, force
+	tempfile demo_indiv
+	save `demo_indiv'
+	
 	clear	
 	set more off
-	use "$main/data/$country_fullname/poverty_final_version_13.dta", clear	
+	use "$main/data/$country_fullname/Datos de la vivienda y del Hogar reg01.dta", clear
 	
+	*hhid
+	gen str6 str_upm = substr(string(upm,"%03.0f"), 1,3) 
+	gen str6 str_nvivi = substr(string(nvivi,"%03.0f"), 1,3)
+	gen str6 str_nhoga = substr(string(nhoga,"%02.0f"), 1,2)
+	egen hhid = concat(str_upm str_nvivi str_nhoga ) //5417
+	merge m:1 hhid using `demo_indiv'
+ 	keep if _merge == 3
+
 
 	*We select the necessary variables and use the same names for all countries :
 	*hhid hh_weight geo_loc geo_loc_min (sometimes others geographic variables when available) urban head_sex head_age head_edu hh_size exp_agg_tot inc_agg_tot
 	*Sometimes rent information is in the HH dataset: house_owner, house_rent, house_est_rent, house_pay ...	
  	
-	rename idmen 								hhid
-	rename poids3 								hh_weight
-	rename province								geo_loc	// 17 unique values
-	rename strate2								geo_loc_min // 33 unique values? best guess
-	rename zd									census_block // 415 unique values
-	rename milieu								urban 
-	rename hhsex								head_sex
-	rename hhagey								head_age
-	rename hhsize								hh_size
-	rename eduhead								head_edu	
-	rename rent1								house_rent
+
+	rename fex			 						hh_weight
+	rename dptorep								geo_loc //7
+	rename stratomuestral						geo_loc_min // 13
+	rename upm									census_block
+	rename area 								urban 
+	rename p05									head_sex
+	rename edad									head_age
+	rename ed04									head_edu
+	rename total 								hh_size
+	*rename p07									head_ethnicity
 	
+
+	*We need to construct/modify some of them
 	
-	*exp_agg_tot inc_agg_tot // This file does not have these variables but they may exist in another datafile (peut-etre fichier_emplois_toute_personne) that we should merge here
+	*exp_agg_tot
+	*gen expenses = gasto*12 // This info can be found in Gastos a nivel de hogar sumaria_hogar.dta
+
+	*inc_agg_tot
+	*gen income = ingreso*12 // This info can be found in Gastos a nivel de hogar sumaria_hogar.dta
 	
+
 	*We destring and label some variables for clarity/uniformity 
-	destring geo_loc, force replace
-	destring geo_loc_min, force replace
-	destring census_block, force replace
-	destring urban, force replace
 	destring head_sex, force replace
 	destring head_age, force replace			
 	destring head_edu, force replace					// Some of these variables are already numeric
 	
 	ta head_sex, missing
-	replace head_sex = 2 if head_sex == 0
+	replace head_sex=2 if head_sex==6
 	label define head_sex_lab 1 "Male" 2 "Female"
 	label values head_sex head_sex_lab
 	
 	ta urban
 	ta urban, nol
-	replace urban = 0 if urban == 2
+	replace urban = 0 if urban == 6
 	label define urban_lab 0 "Rural" 1 "Urban"
 	label values urban urban_lab
 	
@@ -119,7 +131,8 @@ Asks price, quantity, reason for place of purchase, and country of production.
 	*We keep only one line by household and necessary covariates 
  	duplicates drop hhid , force 
  
-	keep hhid hh_weight head_sex head_age head_edu hh_size urban geo_loc  geo_loc_min census_block house_rent
+	keep hhid hh_weight head_sex head_age head_edu hh_size urban geo_loc  geo_loc_min census_block 
+	destring hhid, replace
 	order hhid, first 
 	sort hhid
 	save "$main/waste/$country_fullname/${country_code}_household_cov_original.dta" , replace
@@ -134,147 +147,99 @@ Asks price, quantity, reason for place of purchase, and country of production.
 * Step 2.1: Harmonization of names, introduction of labels *
 ************************************************************
 
-	*We select the necessary variables in each file and use the same names for all countries :
-	*hhid, TOR_original, amount_paid, agg_value_on_period, quantity, unit, price, reason_recode, country_of_prod, product_code,coicop_2dig, housing
-	
-	
-	*DIARY
-	clear
-	set more off
-	use "$main/data/$country_fullname/CQ03.dta"
-	
-	gen agg_value_on_period= Q08*(365/15)
-	save "$main/data/$country_fullname/expenses/adj_CQ03.dta", replace
 
+	* GASTOS ALIMENTARIOS DEL HOGAR
 	clear 
 	set more off
-	use "$main/data/$country_fullname/CQ04.dta"
-	gen agg_value_on_period= Q08
-	save "$main/data/$country_fullname/expenses/adj_CQ04.dta", replace
-
-	*RECALL
+	use "$main/data/$country_fullname/Agregado a nivel de transaccion  agregado.dta", clear
 	
-	local file_num "CQ05 CQ06 CQ07 CQ08 CQ09 CQ10 CQ11 CQ12 CQ13 CQ14 CQ15 CQ16 CQ17 CQ18 CQ19 CQ20 CQ21 CQ22 CQ23" 
-	local annualization_factor "1 2 2 1 2 1 4 1 4 1 4 1 2 1 1 4 2 1 1 "
 	
-	local n_models : word count `file_num'	
-
-forval i=1/`n_models' {
-	
-		***************
-		* GLOBALS	 *
-		***************	
-
-		global file_num `: word `i' of `file_num''		
-		global annualization_factor `: word `i' of `annualization_factor''
-
-		**********************
-		* LOAD SURVEY 	 *
-		**********************	
-		
-		use "$main/data/$country_fullname/$file_num.dta", clear
-
-		gen agg_value_on_period = . 
-		replace agg_value_on_period = Q08*$annualization_factor
-		gen module_tracker = "$file_num"
-
-		save "$main/data/$country_fullname/expenses/adj_$file_num.dta", replace
-	
-}
-
-	
-	* append all the expense files together
-	
-	cd "$main/data/$country_fullname/expenses"
-	fs "*.dta"
-	append using `r(files)'
-
-	rename Q10		 						TOR_original 
-	rename Q08		 						amount_paid							// montant total
-	rename Q05								quantity 							// quantite
-	rename Q06								unit								// unite
-	rename Q07								price								// prix unitaire
-	rename Q11								TOR_reason_for_purchase				// raison du choix de lieu d'achat
-	rename Q12								country_of_prod						// origine de produit
-	rename Q04								product_code 						// COICOP
-	
+	*We select the necessary variables in each file and use the same names for all countries :
+	*hhid, TOR_original, amount_paid, agg_value_on_period, quantity, unit, price, reason_recode, country_of_prod, product_code,coicop_2dig, housing
+	rename fex								hh_weight
+	rename ga03d 							TOR_original 
+	rename ga01c							product_code
+	rename ga01e							product_name
+	rename ga03f							frequency // Need to take into account ? 
+	rename iga03c							quantity_comprando
+	rename iga05c							quantity_auto_prod
+	rename ga03u							unit 
+	rename idga04_ri						amount_paid_comprando 
+	rename idga05g_ri						amount_paid_auto_prod  
+	rename ga02a							mean // 
+	rename divisionIPC						coicop_2dig
+	*It's a prefilled diary
+	keep if ga01==1 // Keep if the hh has the good
+	drop if excluidos==1 // Not taken into account in aggregates 
 	*We need to construct/modify some of them
 	*hhid
-	tostring PROVINCE, replace force 
-	drop if PROVINCE == "" // there are some missing households
-	gen str6 str_ZD = substr(string(ZD,"%03.0f"), 1,3) if ZD <= 99
-	replace str_ZD = substr(string(ZD,"%3.0f"), 1,3) if ZD > 99
-	gen str6 str_MENAGE = substr(string(MENAGE,"%02.0f"), 1,2) if MENAGE < 10
-	replace str_MENAGE = substr(string(MENAGE,"%2.0f"), 1,2) if MENAGE >= 10
-	egen hhid = concat(PROVINCE str_ZD str_MENAGE)
+	gen str6 str_upm = substr(string(upm,"%03.0f"), 1,3) 
+	gen str6 str_nvivi = substr(string(nvivi,"%03.0f"), 1,3)
+	gen str6 str_nhoga = substr(string(nhoga,"%02.0f"), 1,2)
+	egen hhid = concat(str_upm str_nvivi str_nhoga ) //5417
+	
+	*agg_value_on_period
+	replace amount_paid_comprando=0 if amount_paid_comprando==.
+	replace amount_paid_auto_prod=0 if amount_paid_auto_prod==.
+	
+	gen agg_value_on_period = (amount_paid_comprando+amount_paid_auto_prod)*12
 	
 	*coicop_2dig
-	tostring product_code, generate(str_product_code) 
-	gen coicop_2dig = substr(str_product_code,1,2)  //extract first 2-digits of product code to identify housing expenses 
-	destring product_code, replace
-	gen housing = 1 if coicop_2dig == "41"				// Actual rent
-	replace housing = 1 if coicop_2dig == "42"				// Imputed rent as expense
+	gen housing = 1 if product_code == 301101001 |  product_code == 301101003 //rent
+	replace housing = 1 if product_code == 303101001	//imputado			
+	replace housing = 1 if product_code == 301101002				
 	
-	*reason_recode
-	gen reason_recode = . 
-	replace reason_recode = 1 if TOR_reason == 4 | TOR_reason == 6 // "access" (proximity, "vendeur proche/pratique", necessitiy "specialise/pas ailleurs") 
-	replace reason_recode = 2 if TOR_reason == 1 // "price" (cheaper, "bien/service moins cher")
-	replace reason_recode = 3 if TOR_reason == 2 // "quality" (better quality, "meilleure qualite") 
-	replace reason_recode = 4 if TOR_reason == 3  | TOR_reason == 5   // "attributes of TOR" (seller does credit "vendeur fait du credit", family/friend connection "accuillant/ami famille")
-	replace reason_recode = 5 if reason_recode == . // "other" (autre raison, missing)
-	
-	
+
+
 	*We remove mising (or negative) values, destring and label some variables for clarity/uniformity 
 	destring hhid, replace
 	
-	drop if agg_value_on_period ==.
-	drop if agg_value_on_period<=0
 	
-	drop if product_code > 1270499 // only keep monetary expenses;
-	drop if product_code==.
+	ta TOR_original
+	replace TOR_original=47 if mean==2 
+	replace TOR_original=48 if mean==3
+	replace TOR_original=49 if mean==4 
+	replace TOR_original=50 if mean==5 
+	replace TOR_original=51 if mean==6 
+	replace TOR_original=52 if mean==7 
+	replace TOR_original=53 if mean==8 
+	replace TOR_original=54 if mean==9 
+
+
+	replace TOR_original=99 if TOR_original==88
+	replace TOR_original=99 if TOR_original==.
+
+	
+	decode TOR_original, gen(TOR_original_name)
+	ta TOR_original_name 
+	
+	replace TOR_original_name="Producido por el hogar" if mean==2 
+	replace TOR_original_name="Retirado del negocio" if mean==3
+	replace TOR_original_name="Como parte de pago a un miembro del hogar" if mean==4 
+	replace TOR_original_name="Regalado o pagado por algún miembro de otro hogar" if mean==5 
+	replace TOR_original_name="Regalado o donado por algún programa social público" if mean==6 
+	replace TOR_original_name="Otra institución (ONG’S), iglesia" if mean==7 
+	replace TOR_original_name="Otro (Especifique)" if mean==8 
+	replace TOR_original_name="Cubierto por el seguro" if mean==9 
+	replace TOR_original_name="Other" if TOR_original==99
+	label val TOR_original
+	
 	
 
-	destring TOR_original, force replace
-	ta TOR_original
-	
-	drop if TOR_original == 0 // do not keep Cadeau donne; not an expense 
-	
-	replace TOR_original = 13 if TOR_original == . 
-	#delim ; // create the label
-	label define TOR_original_label 
-	1 "Cadeau Recu" 2 "Bien ou service autoproduit"
-	3 "Vendeur ambulant ou poste fixe sur voie" 4 "Domicile du vendeur, petite boutique" 5 "Marche public"
-	6 "Autre lieu d'achat informel" 7 "Supermarche" 8 "Magasin ou atelier formel (societe)"
-	9 "Magasin, atelier formel (societe) tenu" 10 "Secteur public ou parapublic" 11 "Autre lieu d'achat formel" 12 "Hors lieu de residence ou a l'etranger" 13 "Housing";
-	#delim cr
-	label list TOR_original_label
-	label values TOR_original TOR_original_label // assign it
-	decode TOR_original, gen(TOR_original_name)
-	
-	
-	destring reason_recode, force replace
-	#delim ; 
-	label define reason_recode_label 
-	1 "Access" 2 "Price" 3 "Quality" 4 "Attributes of retailer"
-	5 "Other" ;
-	#delim cr
-	label list reason_recode_label
-	label values reason_recode reason_recode_label // assign it
-	decode reason_recode, gen(reason_recode_name)
-	
 	
 	*We keep all household expenditures and relevant variables
-	keep hhid product_code str_product TOR_original TOR_original_name TOR_reason reason_recode quantity price unit amount_paid country_of_prod agg_value_on_period coicop_2dig TOR_original_name housing
+	keep hhid product_code TOR_original TOR_original_name  quantity_comprando quantity_auto_prod unit amount_paid_comprando amount_paid_auto_prod agg_value_on_period  TOR_original_name coicop_2dig housing
 	order hhid, first
 	sort hhid
 	save "$main/waste/$country_fullname/${country_code}_all_lines_raw.dta", replace
+
 
 
 ***************************************************************
 * Step 2.2: Product crosswalk if product codes are not COICOP * 
 ***************************************************************
 
-// Not needed for Comoros
+// Not needed
 
 ************************************************************
 *   Step 3: Generating total expenditures and total income *
@@ -287,8 +252,8 @@ forval i=1/`n_models' {
 	by hhid: egen exp_total = sum(agg_value_on_period) 
 	
 	*exp_housing
-	by hhid: egen exp_rent = sum(agg_value_on_period) if coicop_2dig == "41" // actual rent as expenses
-	by hhid: egen exp_ir = sum(agg_value_on_period) if coicop_2dig == "42" // imputed rent as expenses
+	by hhid: egen exp_rent = sum(agg_value_on_period) if housing ==1 // actual rent as expenses
+	by hhid: egen exp_ir = sum(agg_value_on_period) if housing ==1 // imputed rent as expenses
 	gen exp_ir_withzeros = exp_ir
 	replace exp_ir_withzeros = 0 if exp_ir_withzeros == .
 	gen exp_rent_withzeros = exp_rent
@@ -318,7 +283,17 @@ forval i=1/`n_models' {
 	
 	save "$main/proc/$country_fullname/${country_code}_household_cov.dta", replace
 
+/*test
+	use "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata/data/Paraguay2011/Gastos a nivel de hogar sumaria_hogar.dta" , clear 
+	gen str6 str_upm = substr(string(upm,"%03.0f"), 1,3) 
+	gen str6 str_nvivi = substr(string(nvivi,"%03.0f"), 1,3)
+	gen str6 str_nhoga = substr(string(nhoga,"%02.0f"), 1,2)
+	egen hhid = concat(str_upm str_nvivi str_nhoga ) //5417
+	destring hhid, replace
 
+	merge 1:1 hhid using "$main/proc/$country_fullname/${country_code}_household_cov.dta"
+	keep if _merge ==3
+*/
 *******************************************************************
 * Step 4: Crosswalk between places of purchase and classification *
 *******************************************************************
@@ -342,15 +317,19 @@ forval i=1/`n_models' {
  
 	
 	*We assign the crosswalk (COUNTRY SPECIFIC !)
-	gen detailed_classification=1 if inlist(TOR_original,1,2)
-	replace detailed_classification=2 if inlist(TOR_original,3,4,5)
-	replace detailed_classification=3 if inlist(TOR_original,6)
-	replace detailed_classification=4 if inlist(TOR_original,8,9)
-	replace detailed_classification=5 if inlist(TOR_original,7,11)
-	replace detailed_classification=6 if inlist(TOR_original,10,12)
-	replace detailed_classification=99 if inlist(TOR_original,13)
+	gen detailed_classification=1 if inlist(TOR_original,47,48,49,50,51,52,53)
+	replace detailed_classification=2 if inlist(TOR_original,3,6)
+	replace detailed_classification=3 if inlist(TOR_original,4,10,26)
+	replace detailed_classification=4 if inlist(TOR_original,5,8,9,11,12,13,17,18,21,22,23,24,25,27,29,34,35,36,37,45,46)
+	replace detailed_classification=5 if inlist(TOR_original,1)
+	replace detailed_classification=6 if inlist(TOR_original,30,31,32,33,38,39,40,41,42,54)
+	replace detailed_classification=7 if inlist(TOR_original,16,28,44)
+	replace detailed_classification=8 if inlist(TOR_original,2,7,14,15,19)
+	replace detailed_classification=99 if inlist(TOR_original,20,99)
 
-	export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")
+
+
+	export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes") locale(C)
 	*Note: This table is exported to keep track of the crosswalk between the original places of purchases and our classification 
 	
 	*We remove mising values, destring and label some variables for clarity/uniformity 
@@ -369,7 +348,7 @@ forval i=1/`n_models' {
 	merge 1:m TOR_original using "$main/waste/$country_fullname/${country_code}_all_lines_raw.dta"
 
 	*We keep all household expenditures and relevant variables
-    keep hhid product_code str_product TOR_original TOR_original_name TOR_reason reason_recode quantity price unit amount_paid country_of_prod agg_value_on_period coicop_2dig TOR_original_name housing detailed_classification TOR_original TOR_original_name pct_expenses 
+    keep hhid product_code TOR_original TOR_original_name agg_value_on_period coicop_2dig TOR_original_name housing detailed_classification TOR_original TOR_original_name pct_expenses 
 	order hhid, first
 	sort hhid
 
@@ -383,16 +362,18 @@ forval i=1/`n_models' {
 	
 	
 	*We construct the necessary variables: COICOP_2dig COICOP_3dig COICOP_4dig
-	gen str6 COICOP_2dig = substr(string(product_code,"%07.0f"), 1,2) if product_code>12
-	replace COICOP_2dig= substr(string(product_code,"%02.0f"), 1,2) if product_code<=12
-	gen str6 COICOP_3dig = substr(string(product_code,"%07.0f"), 1,3) 
-	gen str6 COICOP_4dig = substr(string(product_code,"%07.0f"), 1,4) 
+	gen  COICOP_2dig = coicop_2dig
+	gen str6 product_code_3dig = substr(string(product_code,"%09.0f"), 1,3) 
+	gen str6 product_code_4dig = substr(string(product_code,"%09.0f"), 1,4) 
 
 	*We destring and label some variables for clarity/uniformity 
 	destring COICOP_2dig, force replace											
-	destring COICOP_3dig, force replace											
-	destring COICOP_4dig, force replace											
+	destring product_code_3dig, force replace											
+	destring product_code_4dig, force replace	
+	
+	gen product_code_2dig = COICOP_2dig
 
+	/*
 	merge m:1 COICOP_2dig using "$main/proc/COICOP_label_2dig.dta"
 	drop if _merge == 2
 	drop _merge
@@ -410,13 +391,13 @@ forval i=1/`n_models' {
 	drop _merge
 	drop COICOP_4dig
 	ren COICOP_Name4 COICOP_4dig
-	
+*/	
 	
 	*We save the database with all expenditures for the price/unit analysis
 	save "$main/proc/$country_fullname/${country_code}_exp_full_db.dta" , replace
 
 	*We create the final database at the COICOP_4dig level of analysis
-	collapse (sum) agg_value_on_period, by(hhid housing TOR_original COICOP_4dig COICOP_3dig COICOP_2dig price quantity unit detailed_classification TOR_reason reason_recode country_of_prod) 
+	collapse (sum) agg_value_on_period, by(hhid housing TOR_original product_code_4dig product_code_3dig product_code_2dig COICOP_2dig  detailed_classification) 
 	
 	*We rename and create variables relevant for future analysis
 	rename agg_value_on_period exp_TOR_item										// Expenses by item
@@ -426,8 +407,8 @@ forval i=1/`n_models' {
 	gen share_exp_noh = exp_TOR_item/exp_noh									// Share of total expenses by TOR without imputed rent
 	replace share_exp_noh = . if housing == 1
 	
-	order hhid COICOP_4dig COICOP_3dig COICOP_2dig exp_TOR_item quantity unit price TOR_original detailed_classification reason_recode country_of_prod housing , first
-	save "$main/proc/$country_fullname/${country_code}_temp_exp_TOR_item_COICOP_4dig.dta" , replace
+	order hhid product_code_4dig product_code_3dig product_code_2dig COICOP_2dig exp_TOR_item  TOR_original detailed_classification  housing , first
+	save "$main/proc/$country_fullname/${country_code}_temp_exp_TOR_item_product_code_4dig.dta" , replace
 	
 	*We delete unnecessary files
 	erase "$main/waste/$country_fullname/${country_code}_household_cov_original.dta"

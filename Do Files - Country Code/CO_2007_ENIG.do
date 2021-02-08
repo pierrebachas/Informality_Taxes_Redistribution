@@ -391,7 +391,7 @@ subsidios de alimentación en instituciones educativas para menores de 3 años y
 	drop if agg_value_on_period ==.
 	drop if agg_value_on_period<=0
 	
-	
+	* TOR_original
 	replace TOR_original = 25 if CoicopType == 3
 	replace TOR_original = 25 if CoicopType == 1 & TOR_original == . //self production category
 	replace TOR_original = 26 if CoicopType == 4 | CoicopType == 5	//transfers category
@@ -399,10 +399,48 @@ subsidios de alimentación en instituciones educativas para menores de 3 años y
 	destring TOR_original, force replace
 	ta TOR_original
 
+	#delim ; // create the label
+	label define TOR_original_label
+	1	"Almacenes o supermercados de cadena y tiendas por departamento"
+	2	"Hipermercados"
+	3	"Cooperativas, fondos de empleados y comisariatos"
+	4	"Supermercado de cajas de compensación"
+	5	"Supermercados de barrio"
+	10	"Plazas de mercado y galerías"
+	11	"Centrales mayoristas de abastecimiento"
+	18	"Restaurantes"
+	19	"Cafeterías y establecimientos de comidas rápidas"
+	22	"A través de Internet"
+	23	"Televentas y ventas por catálogo"
+	16	"Establecimientos especializados en la venta del artículo o la prestación del servicio adquirido"
+	17	"Farmacias y droguerías"
+	8	"Cigarrerías, salsamentarias y delicatessen"
+	6	"Tiendas de barrio"
+	7	"Misceláneas de barrio y cacharrerías"
+	9	"Graneros"
+	15	"Bodegas o fábricas"
+	12	"Mercados móviles"
+	13	"Vendedores ambulantes o ventas callejeras"
+	21	"Ferias especializadas: artesanal, del hogar, del libro, de computadores, etc."
+	14	"Sanandresitos"
+	25	"Self production"
+	20	"Persona particular"
+	26	"Transfers, from household"
+	0	"[Unspecified]"
+	24	"Otro"
+	99	"No sabe, no informa"
+	999	"[Missing]";
+	#delim cr
+	label list TOR_original_label
+	label values TOR_original TOR_original_label // assign it
+	ta TOR_original
+
+	decode TOR_original, gen(TOR_original_name)
+	ta TOR_original_name
 	
 	
 	*We keep all household expenditures and relevant variables
-	keep hhid product_code TOR_original   quantity unit amount_paid agg_value_on_period   coicop_2dig housing
+	keep hhid product_code TOR_original TOR_original_name   quantity unit amount_paid agg_value_on_period   coicop_2dig housing
 	order hhid, first
 	sort hhid
 	save "$main/waste/$country_fullname/${country_code}_all_lines_raw.dta", replace
@@ -473,7 +511,7 @@ subsidios de alimentación en instituciones educativas para menores de 3 años y
 	set more off
 	label list
 	capture label drop TOR_original_label
-	collapse (sum) agg_value_on_period, by (TOR_original )
+	collapse (sum) agg_value_on_period, by (TOR_original TOR_original_name)
 	rename agg_value_on_period expenses_value_aggregate
 	egen total_exp = sum(expenses_value_aggregate)  
 	gen pct_expenses = expenses_value_aggregate / total_exp 
@@ -490,9 +528,6 @@ subsidios de alimentación en instituciones educativas para menores de 3 años y
 	replace detailed_classification=8 if inlist(TOR_original,18)
 	replace detailed_classification=9 if inlist(TOR_original,19)
 	replace detailed_classification=99 if inlist(TOR_original,0,24,99,999)
-
-
-
 
 	export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")
 	*Note: This table is exported to keep track of the crosswalk between the original places of purchases and our classification 

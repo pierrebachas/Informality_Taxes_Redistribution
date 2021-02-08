@@ -15,9 +15,10 @@
 if "`c(username)'"=="wb520324" { 													// Eva's WB computer 
 	global main "C:\Users\wb520324\Dropbox\Regressivity_VAT\Stata"		
 }	
- else if "`c(username)'"=="" { 										
-	global main ""
-	}
+	else if "`c(username)'"=="evadavoine" { 									// Eva's personal laptop
+	global main "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata"
+	}	
+		
 
 ********************************************************************************
 ********************************************************************************
@@ -104,8 +105,8 @@ All expenditures, sources of income, debts, transfers,... with one line per econ
 	
 	
 	*We keep only one line by household and necessary covariates 
- 	duplicates drop hhid , force //4954
- 
+	keep if m5==1
+	
 	keep hhid hh_weight head_sex head_age head_edu hh_size urban geo_loc geo_loc_min census_block
 	order hhid, first 
 	sort hhid
@@ -191,6 +192,7 @@ All expenditures, sources of income, debts, transfers,... with one line per econ
 	destring hhid, replace
 	drop if agg_value_on_period == .
 	drop if product_code > 1270499 // only keep monetary expenses; 118 deleted
+	drop if product_code == 0 
 
 	destring TOR_original, force replace
 	ta TOR_original

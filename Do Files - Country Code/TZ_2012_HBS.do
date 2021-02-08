@@ -907,6 +907,7 @@ subsidios de alimentación en instituciones educativas para menores de 3 años y
 		ta TOR_original_name
 		drop if TOR_original == . // 0 obs deleted
 	
+		gen housing = 0 
 		replace housing=1 if TOR_original==13
 		gen quantity=.
 		gen unit=. 
@@ -980,7 +981,7 @@ subsidios de alimentación en instituciones educativas para menores de 3 años y
 	
 		
 	*We keep all household expenditures and relevant variables
-	keep hhid product_code TOR_original quantity unit agg_value_on_period housing coicop_2dig   
+	keep hhid product_code TOR_original TOR_original_name quantity unit agg_value_on_period housing coicop_2dig   
 	order hhid, first
 	sort hhid
 	save "$main/waste/$country_fullname/${country_code}_all_lines_raw.dta", replace
@@ -1051,7 +1052,7 @@ subsidios de alimentación en instituciones educativas para menores de 3 años y
 	set more off
 	label list
 	capture label drop TOR_original_label
-	collapse (sum) agg_value_on_period, by (TOR_original )
+	collapse (sum) agg_value_on_period, by (TOR_original TOR_original_name)
 	rename agg_value_on_period expenses_value_aggregate
 	egen total_exp = sum(expenses_value_aggregate)  
 	gen pct_expenses = expenses_value_aggregate / total_exp 
@@ -1059,15 +1060,11 @@ subsidios de alimentación en instituciones educativas para menores de 3 años y
  
 	
 	*We assign the crosswalk (COUNTRY SPECIFIC !)
-	gen detailed_classification=1 if inlist(TOR_original,10,6,9,8,12)
+	gen detailed_classification=1 if inlist(TOR_original,10,6,9,8,11,12)
 	replace detailed_classification=2 if inlist(TOR_original,1,3)
 	replace detailed_classification=4 if inlist(TOR_original,2)
 	replace detailed_classification=5 if inlist(TOR_original,4,5)
-	replace detailed_classification=6 if inlist(TOR_original,11)
 	replace detailed_classification=99 if inlist(TOR_original,7)
-
-
-
 
 	export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")
 	*Note: This table is exported to keep track of the crosswalk between the original places of purchases and our classification 

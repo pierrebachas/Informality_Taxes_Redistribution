@@ -169,8 +169,8 @@ expenses_and_totals.dta
 	replace TOR_reason = 99 if TOR_reason == .
 	gen reason_recode = . 
 	replace reason_recode = 1 if TOR_reason == 4 | TOR_reason == 5 | TOR_reason == 8 // "access" (proximity + practicality+ necessity) 
-	replace reason_recode = 2 if TOR_reason == 1 // "price" (cheaper)
-	replace reason_recode = 3 if TOR_reason == 2 // "quality" (better quality) 
+	replace reason_recode = 2 if TOR_reason == 1   // "price" (cheaper)
+	replace reason_recode = 3 if TOR_reason == 2   // "quality" (better quality) 
 	replace reason_recode = 4 if TOR_reason == 6 | reason == 3 // "attributes of TOR" ( better reception, deals on basis of deferred payments)
 	replace reason_recode = 5 if reason_recode == . // "other" (irrelevant, mere chance, is not in place of residence, not another place, friends advice, others, 13-99)
 	
@@ -190,25 +190,8 @@ expenses_and_totals.dta
 	replace TOR_original = 999 if TOR_original == .
 	replace TOR_original = 47 if TOR_original > 47 & TOR_original < 100
 	replace TOR_original = 48 if purchase_method == 4 | purchase_method == 5
-	#delim ; // create the label
-	label define TOR_original_label 
-0 "Cadeau recu en nature ou en espace" 2 "Bien ou service autoproduit" 3 "Grands magasin"
-4 "Supermarche" 5 "Mini marche, autre magasin non specialise" 6 "Boutique de station service"
-7 "Boutique de quartier" 8 "Magasin de gros a petits prix" 9 "Marche"
-10 "Kiosque ou echoppe marche" 11 "Kiosque ou echoppe quartier" 
-12 "Quincallerie (petite taille)"
-13 "Poissonnerie" 14 "Service de soins personnels" 15 "Telephone, eau, electricite" 16 "Service postal" 
-17 "Bar, cafe, restaurant, hotel" 18 "Cabine telephone publique" 19 "Cabine telephone privee" 20 "Autres services publics" 
-21 "Boucherie" 22 "Boulangerie, patisserie" 23 "Pressing, blanchisserie" 24 "Service de transport prive" 
-25 "Service de transport public" 26 "Vendeur vehicules concessionaire" 27 "Atelier, service reparation" 
-28 "Station service (lubrifiants)" 29 "Clinique, laboratoire medical prive" 30 "Clinique, laboratoire medical public"
-31 "Pharmacie" 32 "Ecole, lycees, universite privas" 33 "Ecole, lycee, universite publics" 34 "Librairie, papeterie" 
-35 "Autres service prives" 36 "Marchant ambulants" 37 "Pointe vente internet" 38 "Menage" 39 "Autre lieux d'achat dans lepays" 
-40 "Petit marche boutique (ecole, universite)" 41 "Foire, salon, festival" 42 "Etranger" 43 "Rue" 
-44 "Vente de piece de rechange pour moto" 45 "Moulin" 46 "Housing" ;
-	#delim cr
-	label list TOR_original_label
-	label values TOR_original TOR_original_label // assign it
+
+
 	ta TOR_original
 
 	decode TOR_original, gen(TOR_original_name)

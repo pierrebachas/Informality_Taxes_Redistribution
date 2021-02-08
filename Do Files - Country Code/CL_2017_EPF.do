@@ -138,7 +138,6 @@ All expenditures, sources of income, debts, transfers,... with one line per econ
 	rename CCIF								product_code
 	rename GLOSA_ESTABLECIMIENTO 			TOR_original_name 
 
-	
 	*coicop_2dig
 	replace product_code = subinstr(product_code, ".", "",.) 
 	drop if product_code=="-77"
@@ -240,8 +239,9 @@ All expenditures, sources of income, debts, transfers,... with one line per econ
 	gen pct_expenses = expenses_value_aggregate / total_exp 
 	order TOR_original_name TOR_original expenses_value_aggregate pct_expenses total_exp 
  
-	
-	*We assign the crosswalk (COUNTRY SPECIFIC !)
+	*We assign the crosswalk (COUNTRY SPECIFIC !) This one is totally wrong! What happened? 
+
+	/*
 	gen detailed_classification=2 if inlist(TOR_original,3,8,17)
 	replace detailed_classification=3 if inlist(TOR_original,1)
 	replace detailed_classification=4 if inlist(TOR_original,16,9,7)
@@ -249,11 +249,20 @@ All expenditures, sources of income, debts, transfers,... with one line per econ
 	replace detailed_classification=6 if inlist(TOR_original,11,6,2,10)
 	replace detailed_classification=8 if inlist(TOR_original,14)
 	replace detailed_classification=99 if inlist(TOR_original,-77,5,13)
+`	*/ 
 
+	gen detailed_classification=2 if inlist(TOR_original,3,6,7)			 
+	replace detailed_classification=3 if inlist(TOR_original,2,16)
+	replace detailed_classification=4 if inlist(TOR_original,9,7,10,15)
+	replace detailed_classification=5 if inlist(TOR_original,1,5,8)
+	replace detailed_classification=6 if inlist(TOR_original,11,12,13,14)
+	replace detailed_classification=8 if inlist(TOR_original,4)
+	replace detailed_classification=99 if inlist(TOR_original,-77,17)
 
+	export delimited using "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata/tables/Chile2017/CL_TOR_stats_for_crosswalk.csv", replace
 
 	
-	*export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")
+	*export excel using "$main/tables/$country_fullname/${country_code}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")
 	*Note: This table is exported to keep track of the crosswalk between the original places of purchases and our classification 
 	
 	*We remove mising values, destring and label some variables for clarity/uniformity 

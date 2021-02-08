@@ -5,8 +5,6 @@
 					* 	      	 Niger 2007				*
 					*************************************
 
-
-
 ***************
 * DIRECTORIES *
 ***************
@@ -443,18 +441,15 @@ Finally, the unspecified category represents a bit less than 30% of the total ex
  
 	
 	*We assign the crosswalk (COUNTRY SPECIFIC !)
-	gen detailed_classification=1 if inlist(TOR_original,1,13)
+	gen detailed_classification=1 if inlist(TOR_original,1,9,13)
 	replace detailed_classification=2 if inlist(TOR_original,11,5)
 	replace detailed_classification=3 if inlist(TOR_original,4)
 	replace detailed_classification=4 if inlist(TOR_original,3)
 	replace detailed_classification=5 if inlist(TOR_original,2)
-	replace detailed_classification=6 if inlist(TOR_original,7,9,10,12)
+	replace detailed_classification=6 if inlist(TOR_original,7,10,12)
 	replace detailed_classification=7 if inlist(TOR_original,8)
 	replace detailed_classification=8 if inlist(TOR_original,6)
 	replace detailed_classification=99 if inlist(TOR_original,14)
-
-
-
 
 	export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")
 	*Note: This table is exported to keep track of the crosswalk between the original places of purchases and our classification 

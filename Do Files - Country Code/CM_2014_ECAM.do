@@ -14,9 +14,10 @@
 if "`c(username)'"=="wb520324" { 													// Eva's WB computer 
 	global main "C:/Users/wb520324/Dropbox/Regressivity_VAT/Stata"		
 }	
- else if "`c(username)'"=="" { 										
-	global main ""
-	}
+ 	else if "`c(username)'"=="evadavoine" { 									// Eva's personal laptop
+	global main "/Users/evadavoine/Dropbox/Regressivity_VAT/Stata"
+	}	
+		
 	
 	qui include "$main/dofiles/server_header.doh" 								// Runs a file defining the globals for all subpath
 	display "`c(current_date)' `c(current_time)'"
@@ -135,7 +136,7 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 	rename MILIEU 								urban 
 	rename S01Q2								head_sex
 	rename S01Q4								head_age
-	rename S07Q04 								hh_size    						// Nombre de personnes dans le menage il y a 12 mois
+	rename S0Q11A 								hh_size    						// Nombre de personnes dans le menage il y a 12 mois
 	rename S06Q4  								house_rent 	
 	
 	
@@ -185,7 +186,7 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 ************************************************************
 
 	
-	*SELF CONSO
+	/*SELF CONSO
 	clear all 
 	set more off
 	use "$main/data/$country_fullname/ECAM4S12L.dta", clear
@@ -287,6 +288,8 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 	drop if TOR_original == . 
 
 	keep hhid hh_weight TOR_original TOR_original_name agg_value_on_period product_code product_name
+			gen module_tracker="agro"
+
 		
 	saveold "$main/waste/$country_fullname/${country_code}_all_lines_raw_selfprod_agro.dta", replace
 
@@ -354,6 +357,8 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 
 	keep hhid hh_weight TOR_original TOR_original_name agg_value_on_period product_code product_name
 		
+		gen module_tracker="livestock"
+	
 	saveold "$main/waste/$country_fullname/${country_code}_all_lines_raw_selfprod_livestock.dta", replace
 
 	*SELF-CONSO 3
@@ -422,9 +427,11 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 	drop if TOR_original == . 
 
 	keep hhid hh_weight TOR_original TOR_original_name agg_value_on_period product_code product_name
-		
-	saveold "$main/waste/$country_fullname/${country_code}_all_lines_raw_selfprod_cueillette.dta", replace
 	
+	gen module_tracker="cueillette"
+
+	saveold "$main/waste/$country_fullname/${country_code}_all_lines_raw_selfprod_cueillette.dta", replace
+	*/
 	*DIARY
 	clear 
 	set more off
@@ -451,7 +458,7 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 	*We need to modify/construct some of them
 	*agg_value_on_period
 	gen agg_value_on_period = S14Q7*(365/15) if urban==1 //annualize 15-day expense diary
-	replace agg_value_on_period = S14Q7*(365/10) if urban==2
+	replace agg_value_on_period = S14Q7*(365/10) if urban==0
 
 
 	gen deflateur=0.87 if geo_loc==5
@@ -507,12 +514,12 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 	tempfile diary_self_conso_raw
 	save `diary_self_conso_raw' 
 	restore
-	drop if TOR_original==1
+	drop if TOR_original==1 | TOR_original==15 | TOR_original==16
 	saveold "$main/waste/$country_fullname/${country_code}_all_lines_raw_diary_no_selfprod.dta", replace
 
 	
 	
-	*We keep the maximum consumption between the self_production modules and the diary
+	/*We keep the maximum consumption between the self_production modules and the diary
 	use `diary_self_conso_raw'
 	keep if TOR_original==1
 	gen str6 COICOP_4dig = substr(string(product_code, "%07.0f"), 1,4)
@@ -541,7 +548,7 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 	gen product_code= COICOP_4dig*1000
 	drop COICOP_4dig
 	tempfile self_conso
-	save `self_conso'
+	save `self_conso'*/
 	
 	*DURABLES - Need to Impute TOR from diary
 	****ONLY AT THE DECILE LEVEL
@@ -748,7 +755,34 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 	ta TOR_original, m
 	tostring hhid, replace
 	destring product_code, replace
+	gen module_tracker="durables"
+
 	save "$main/waste/$country_fullname/${country_code}_durables_with_imputed_TOR.dta", replace
+	
+	*Self prod
+	use "$main/data/$country_fullname/ECAM4PRODUIT.dta" , clear
+	egen hhid = concat(S0Q2 S0Q5)
+	
+	ren prod product_code
+	ren TDEP agg_value_on_period
+	ren DEFLATEU deflateur
+	
+	drop if ACQUIS==1
+	
+	gen TOR_original=1 if ACQUIS==2
+	replace TOR_original=15 if ACQUIS==3
+	replace TOR_original=16 if ACQUIS==4 | ACQUIS==5
+
+	gen TOR_original_name="Auto consommation" if ACQUIS==2
+	replace TOR_original_name="Cadeau recu" if ACQUIS==3
+	replace TOR_original_name="Ramasse ou preleve" if ACQUIS==4 | ACQUIS==5
+
+	
+
+
+	
+	tempfile self_conso
+	save `self_conso'
 	
 
 	*Append all the files together
@@ -757,6 +791,10 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 	append using "$main/waste/$country_fullname/${country_code}_durables_with_imputed_TOR.dta"
 	
 	
+	*TOR_original_name
+	drop TOR_original_name
+	decode TOR_original , gen(TOR_original_name)
+	
 	*coicop_2dig
 	tostring product_code, generate(str_product_code) 
 	gen coicop_2dig = substr(str_product_code,1,2)  //extract first 2-digits of product code to identify housing expenses 
@@ -764,8 +802,17 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 	gen housing = 1 if coicop_2dig == "41"				// Actual rent
 	replace housing = 1 if coicop_2dig == "42"				// Imputed rent as expense
 	
+	keep hhid product_code str_product TOR_original TOR_original_name agg_value_on_period coicop_2dig  housing 
+	order hhid, first
+	sort hhid
+	
 	save "$main/waste/$country_fullname/${country_code}_all_lines_raw.dta", replace
-		
+
+	
+
+****
+
+	
 
 ***************************************************************
 * Step 2.2: Product crosswalk if product codes are not COICOP * 
@@ -830,8 +877,7 @@ Finally, the unspecified category represents a bit less than 4.77% of the total 
 	
 	set more off
 	label list
-	capture label drop TOR_original_label
-	collapse (sum) agg_value_on_period, by (TOR_original)
+	collapse (sum) agg_value_on_period, by (TOR_original TOR_original_name)
 	rename agg_value_on_period expenses_value_aggregate
 	egen total_exp = sum(expenses_value_aggregate)  
 	gen pct_expenses = expenses_value_aggregate / total_exp 

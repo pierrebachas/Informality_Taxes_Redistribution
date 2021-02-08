@@ -295,11 +295,8 @@ For Rep. of Congo, we will use expenses to construct the deciles.
 	replace detailed_classification=5 if inlist(TOR_original,2,3)
 	replace detailed_classification=6 if inlist(TOR_original,11,12,13,15)
 	replace detailed_classification=7 if inlist(TOR_original,10)
-	replace detailed_classification=7 if inlist(TOR_original,9)
+	replace detailed_classification=8 if inlist(TOR_original,9)
 	replace detailed_classification=99 if inlist(TOR_original,16)
-
-
-
 
 	export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")
 	*Note: This table is exported to keep track of the crosswalk between the original places of purchases and our classification 

@@ -1395,7 +1395,7 @@ save "$main/waste/$country_fullname/${country_code}_all_modules_appended.dta", r
 	
 	* We merge the TOR_original_recode
 	
-	merge m:1 TOR_raw using "$main/tables/$country_fullname/${country_code}_TOR_original_recode.dta",  /// 
+	merge m:1 TOR_raw using "$main/tables/$country_fullname/${country_code}_ENAHO_crosswalk_TOR.dta",  /// 
 	keepusing(TOR_original TOR_original_name)  
 	
 	
@@ -1604,14 +1604,15 @@ save "$main/waste/$country_fullname/${country_code}_all_modules_appended.dta", r
  
 	
 	*We assign the crosswalk (COUNTRY SPECIFIC !)
-	gen detailed_classification=1 if inlist(TOR_original,41)
+	gen detailed_classification=1 if inlist(TOR_original,41,42)
 	replace detailed_classification=2 if inlist(TOR_original,37,22,19,24,3,26,27,1,7)
 	replace detailed_classification=3 if inlist(TOR_original,5)
-	replace detailed_classification=4 if inlist(TOR_original,18,20,25,32,33,39,40)
+	replace detailed_classification=4 if inlist(TOR_original,20,25,32,33,39,40)
 	replace detailed_classification=5 if inlist(TOR_original,4,35)
 	replace detailed_classification=6 if inlist(TOR_original,30,12,36,29,13,11,9,38,21,14,23,17,16,10,6,28,2)
 	replace detailed_classification=7 if inlist(TOR_original,15,8)
 	replace detailed_classification=8 if inlist(TOR_original,34)
+	replace detailed_classification=10 if inlist(TOR_original,18)	
 	replace detailed_classification=99 if inlist(TOR_original,31)
 
 
@@ -1648,6 +1649,12 @@ save "$main/waste/$country_fullname/${country_code}_all_modules_appended.dta", r
 * Consumption labels, and creation of the database at the COICOP_4dig level
 * [Output = Note in Masterfile + consumption data with standardized classification of codes ]
 	
+	
+	merge m:1 COICOP_2dig using "$main/proc/COICOP_label_2dig.dta"
+	drop if _merge == 2
+	drop _merge
+	drop COICOP_2dig
+	ren COICOP_Name2 COICOP_2dig
 	
 		
 	*We save the database with all expenditures for the price/unit analysis

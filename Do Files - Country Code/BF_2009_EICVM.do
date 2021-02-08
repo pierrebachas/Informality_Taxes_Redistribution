@@ -321,14 +321,15 @@ forval i=1/`n_models' {
 	*We assign the crosswalk (COUNTRY SPECIFIC !)
 	gen detailed_classification=1 if inlist(TOR_original,0,2,38,45)
 	replace detailed_classification=2 if inlist(TOR_original,41,11,10,9,36,43)
-	replace detailed_classification=3 if inlist(TOR_original,7,40,5)
-	replace detailed_classification=4 if inlist(TOR_original,44,26,27,28,14,34,6,31,23,22,21,13,12)
+	replace detailed_classification=3 if inlist(TOR_original,7,40,5,12)
+	replace detailed_classification=4 if inlist(TOR_original,44,26,27,28,14,34,6,31,23,22,21,13)
 	replace detailed_classification=5 if inlist(TOR_original,4,8,3)
 	replace detailed_classification=6 if inlist(TOR_original,37,42,32,19,29,33,25,18,20,30,15,16)
 	replace detailed_classification=7 if inlist(TOR_original,24,35)
 	replace detailed_classification=8 if inlist(TOR_original,17)
 	replace detailed_classification=99 if inlist(TOR_original,39)
 
+	
 
 
 

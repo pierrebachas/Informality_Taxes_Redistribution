@@ -270,10 +270,10 @@ Annualized expenditure exists per each line for each economic activity (original
  
 	
 	*We assign the crosswalk (COUNTRY SPECIFIC !)
-	gen detailed_classification=1 if inlist(TOR_original,1,2,4,6)
-	replace detailed_classification=2 if inlist(TOR_original,3,5)
-	replace detailed_classification=3 if inlist(TOR_original,9)
-	replace detailed_classification=4 if inlist(TOR_original,8)
+	gen detailed_classification=1 if inlist(TOR_original,1,2,4)
+	replace detailed_classification=2 if inlist(TOR_original,3,5,6)
+	// replace detailed_classification=3 if inlist(TOR_original,9)
+	replace detailed_classification=4 if inlist(TOR_original,8,9)
 	replace detailed_classification=5 if inlist(TOR_original,7,11)
 	replace detailed_classification=6 if inlist(TOR_original,10,12)
 	replace detailed_classification=99 if inlist(TOR_original,13)

@@ -609,14 +609,13 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 	gen detailed_classification=1 if inlist(TOR_original,80)
 	replace detailed_classification=2 if inlist(TOR_original,10,8,16,18,4)
 	replace detailed_classification=3 if inlist(TOR_original,3,7)
-	replace detailed_classification=4 if inlist(TOR_original,48,64,60,53,52,42,28,40,30,19,59,27,37,61,51,29,23,22,20,63,62,58,57,54,49,46,45,44,39,38,74,13,12,11,9,6)
+	replace detailed_classification=4 if inlist(TOR_original,48,64,60,53,52,42,28,40,30,19,59,27,37,61,51,29,23,20,63,62,58,57,54,49,46,45,44,39,38,74,13,12,11,9,6)
 	replace detailed_classification=5 if inlist(TOR_original,1,36,2)
-	replace detailed_classification=6 if inlist(TOR_original,5,21,31,32,33,34,43,47,68,35,56,70,71,72,25,67,69)
+	replace detailed_classification=6 if inlist(TOR_original,5,17,21,31,32,33,34,43,47,68,35,56,70,71,72,25,67,69)
 	replace detailed_classification=7 if inlist(TOR_original,73,65,66)
 	replace detailed_classification=8 if inlist(TOR_original,14,15,26,41)
-	replace detailed_classification=99 if inlist(TOR_original,17,55,81,24)
-
-
+	replace detailed_classification=10 if inlist(TOR_original,22)	
+	replace detailed_classification=99 if inlist(TOR_original,55,81,24)
 
 
 	export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")

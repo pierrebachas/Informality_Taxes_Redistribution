@@ -375,7 +375,7 @@ Current problems
 	rename agg_value_on_period exp_TOR_item										// Expenses by item
 	by hhid : egen exp_total= sum(exp_TOR_item)
 	gen share_exp_total = exp_TOR_item/exp_total								// Share of total expenses by TOR
-	by hhid : egen exp_noh= sum(exp_TOR_item) if housing !=1
+	by hhid : egen exp_noh= sum(exp_TOR_item) if housing !=1					// No value if housing==1
 	gen share_exp_noh = exp_TOR_item/exp_noh									// Share of total expenses by TOR without imputed rent
 	replace share_exp_noh = . if housing == 1
 	

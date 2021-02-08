@@ -194,10 +194,10 @@ use "$main/data/$country_fullname/04 cuestionario 1_Seccion-2 Bienes hogar.dta",
 	replace TOR_original = 98 if TOR_original == 85 | TOR_original == 96
 
 	
-	
+	decode TOR_original, gen(TOR_original_name)
 	
 	*We keep all household expenditures and relevant variables
-	keep hhid product_code str_product TOR_original  quantity  unit amount_paid  agg_value_on_period coicop_2dig  housing
+	keep hhid product_code str_product TOR_original TOR_original_name  quantity  unit amount_paid  agg_value_on_period coicop_2dig  housing
 	order hhid, first
 	sort hhid
 	save "$main/waste/$country_fullname/${country_code}_all_lines_raw.dta", replace
@@ -267,7 +267,7 @@ use "$main/data/$country_fullname/04 cuestionario 1_Seccion-2 Bienes hogar.dta",
 	set more off
 	label list
 	capture label drop TOR_original_label
-	collapse (sum) agg_value_on_period, by (TOR_original)
+	collapse (sum) agg_value_on_period, by (TOR_original TOR_original_name)
 	rename agg_value_on_period expenses_value_aggregate
 	egen total_exp = sum(expenses_value_aggregate)  
 	gen pct_expenses = expenses_value_aggregate / total_exp 

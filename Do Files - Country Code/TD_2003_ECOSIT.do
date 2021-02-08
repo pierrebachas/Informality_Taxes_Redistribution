@@ -59,6 +59,18 @@ ECOSIT_LOYER_IMPUTE.dta
 Housing expenditures
 */
 
+
+import excel "/Users/evadavoine/Dropbox/Regressivity_VAT/Surveys_consumption/Countries_with_questions/Chad/TCD_2003_ECOSIT_v01_M/NOMENCLATURE.xls", sheet("Produit") firstrow clear
+gen product_code_4dig = subinstr(NOMENCLATUREDESPRODUITSdespa,".","",.)
+gen countvar = strlen(product_code_4dig)
+keep if countvar==4
+drop if product_code_4dig=="CODE"
+drop NOMENCLATUREDESPRODUITSdespa
+drop countvar
+ren B product_lab
+tempfile crosswalk_4dig
+save `crosswalk_4dig'
+
 *****************************************************
 * Step 1: Prepare covariates at the household level *
 *****************************************************
@@ -486,7 +498,15 @@ forval i=1/`n_models' {
 	gen product_code_3dig = substr(string(product_code,"%05.0f"),1,3)
 	gen product_code_4dig = substr(string(product_code,"%05.0f"),1,4)
 
-
+	merge m:1 COICOP_2dig using "$main/proc/COICOP_label_2dig.dta"
+	drop if _merge == 2
+	drop _merge
+	drop COICOP_2dig
+	ren COICOP_Name2 COICOP_2dig
+	
+	merge m:1 product_code_4dig using `crosswalk_4dig'
+	drop if _merge == 2
+	drop _merge
 	
 
 	*We destring and label some variables for clarity/uniformity 
@@ -495,7 +515,8 @@ forval i=1/`n_models' {
 	destring product_code_3dig, force replace											
 	destring product_code_4dig, force replace											
 
-		
+	labmask product_code_4dig , values(product_lab)
+
 	
 	*We save the database with all expenditures for the price/unit analysis
 	save "$main/proc/$country_fullname/${country_code}_exp_full_db.dta" , replace

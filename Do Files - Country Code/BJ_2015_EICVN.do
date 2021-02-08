@@ -124,11 +124,12 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 	
 	*We keep only one line by household and necessary covariates 
  	duplicates drop hhid , force //4954
+	destring hhid , replace
  
 	keep hhid hh_weight head_sex head_age head_edu hh_size urban geo_loc geo_loc_2 geo_loc_3 geo_loc_min census_block 
 	order hhid, first 
 	sort hhid
-	save "$main\waste\$country_fullname\${country_code}_household_cov_original.dta" , replace
+	save "$main/waste/$country_fullname/${country_code}_household_cov_original.dta" , replace
 	
 
 
@@ -223,13 +224,13 @@ forval i=1/`n_models' {
 	drop if product_code > 1270499 // only keep monetary expenses;
 	drop if product_code==.
 	
+	
 
 	destring TOR_original, force replace
 	ta TOR_original, m nol
 	
 	drop if TOR_original == 0 // do not keep Cadeau donne; not an expense 
 	
-	replace TOR_original = 13 if TOR_original == . & product_code>=41001 & product_code<=45101 // housing
 	#delim ; // create the label
 	label define TOR_original_label 
 	1 "Cadeau Recu" 2 "Bien ou service autoproduit"
@@ -243,6 +244,7 @@ forval i=1/`n_models' {
 
 	decode TOR_original, gen(TOR_original_name)
 	ta TOR_original_name
+	drop if TOR_original==.
 	
 	destring reason_recode, force replace
 	#delim ; 
@@ -332,7 +334,7 @@ forval i=1/`n_models' {
 	gen pct_expenses = expenses_value_aggregate / total_exp 
 	order TOR_original_name TOR_original expenses_value_aggregate pct_expenses total_exp 
  
-	stop!
+	
 	*We assign the crosswalk (COUNTRY SPECIFIC !)
 	gen detailed_classification=1 if inlist(TOR_original,1,2,6)
 	replace detailed_classification=2 if inlist(TOR_original,3,5)
@@ -341,7 +343,6 @@ forval i=1/`n_models' {
 	replace detailed_classification=5 if inlist(TOR_original,7,11)
 	replace detailed_classification=6 if inlist(TOR_original,10,12)
 	replace detailed_classification=99 if inlist(TOR_original,13,.)
-
 
 	export excel using "$main/tables/$country_fullname/${country_fullname}_TOR_stats_for_crosswalk.xls", replace firstrow(variables) sheet("TOR_codes")
 	*Note: This table is exported to keep track of the crosswalk between the original places of purchases and our classification 
@@ -377,8 +378,11 @@ forval i=1/`n_models' {
 	
 	*We construct the necessary variables: COICOP_2dig COICOP_3dig COICOP_4dig
 	gen str6 COICOP_2dig = substr(string(product_code,"%07.0f"), 1,2) 
+	replace  COICOP_2dig = substr(string(product_code,"%06.0f"), 1,2) if product_code>= 41001 & product_code<= 45329
 	gen str6 COICOP_3dig = substr(string(product_code,"%07.0f"), 1,3) 
+	replace  COICOP_3dig = substr(string(product_code,"%06.0f"), 1,3) if product_code>= 41001 & product_code<= 45329
 	gen str6 COICOP_4dig = substr(string(product_code,"%07.0f"), 1,4) 
+	replace  COICOP_4dig = substr(string(product_code,"%06.0f"), 1,4) if product_code>= 41001 & product_code<= 45329
 
 	*We destring and label some variables for clarity/uniformity 
 	destring COICOP_2dig, force replace											
