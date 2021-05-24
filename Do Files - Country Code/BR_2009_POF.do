@@ -46,18 +46,19 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 *****************************	
 
 /*
-	pes.dta (dataset called MORADOR in the website) 
-	dom.dta
+	t_morador_s.dta (dataset called MORADOR in the website) 
+	t_domicilio_s.dta
 	Household level general statistics, one line per household. 	
 	
-	desp_12m.dta
-	desp_90d.dta
-	desp_veic.dta
-	cadern_desp.dta
-	desp.dta
-	outras_desp.dta
-	serv_dom.dta
-	alug_est.dta
+	
+	t_despesa_12meses_s.dta
+	t_despesa_90dias_s.dta
+	t_despesa_veiculo_s.dta
+	t_caderneta_despesa_s.dta
+	t_despesa_individual_s.dta
+	t_outras_despesas_s.dta
+	t_servico_doms_s.dta
+	t_aluguel_estimado_s.dta
 	All expenditures, sources of income, debts, transfers,... with one line per economic activity.
 */
 
@@ -68,9 +69,9 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 
 	clear
 	set more off
-	use "$main/data/$country_fullname/pes.dta", clear
+	use "$main/data/$country_fullname/t_morador_s.dta", clear
 	
-	merge m:1 COD_UF NUM_SEQ NUM_DV COD_DOMC using "$main/data/$country_fullname/dom.dta"
+	merge m:1 COD_UF NUM_SEQ NUM_DV COD_DOMC using "$main/data/$country_fullname/t_domicilio_s.dta"
 	drop _merge
 
 	*We select the necessary variables and use the same names for all countries :
@@ -215,14 +216,14 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 	*Append 8 databases
 	clear 
 	set more off
-	use "$main/data/$country_fullname/desp_12m.dta", clear // 76 761
-	append using "$main/data/$country_fullname/desp_90d.dta" // 192 813
-	append using "$main/data/$country_fullname/desp_veic.dta" // 16 560
-	append using  "$main/data/$country_fullname/cadern_desp.dta"
-	append using "$main/data/$country_fullname/desp.dta"
-	append using "$main/data/$country_fullname/outras_desp.dta"
-	append using "$main/data/$country_fullname/serv_dom.dta"
-	append using "$main/data/$country_fullname/alug_est.dta"
+	use "$main/data/$country_fullname/t_despesa_12meses_s.dta", clear // 76 761
+	append using "$main/data/$country_fullname/t_despesa_90dias_s.dta" // 192 813
+	append using "$main/data/$country_fullname/t_despesa_veiculo_s.dta" // 16 560
+	append using  "$main/data/$country_fullname/t_caderneta_despesa_s.dta"
+	append using "$main/data/$country_fullname/t_despesa_individual_s.dta"
+	append using "$main/data/$country_fullname/t_outras_despesas_s.dta"
+	append using "$main/data/$country_fullname/t_servico_doms_s.dta"
+	append using "$main/data/$country_fullname/t_aluguel_estimado_s.dta"
 	
 	
 	*We select the necessary variables in each file and use the same names for all countries :
