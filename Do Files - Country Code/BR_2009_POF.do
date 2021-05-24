@@ -66,230 +66,71 @@ if "`c(username)'"=="wb520324" { 													// Eva's WB computer
 *****************************************************
 
 
-use "$main/data/$country_fullname/pes.dta", clear
-	* 190 159 = number of individuals
-	
+	clear
 	set more off
+	use "$main/data/$country_fullname/pes.dta", clear
 	
-	ta NUM_UC // maximum of 4 consumption units per dwelling
+	merge m:1 COD_UF NUM_SEQ NUM_DV COD_DOMC using "$main/data/$country_fullname/dom.dta"
+	drop _merge
+
+	*We select the necessary variables and use the same names for all countries :
+	*hhid hh_weight geo_loc geo_loc_min (sometimes others geographic variables when available) urban head_sex head_age head_edu hh_size exp_agg_tot inc_agg_tot
 	
+	rename COD_COR_RACA 		head_ethnicity
+	rename COD_NIVEL_INSTR 		head_edu
+	rename ANOS_DE_ESTUDO 		head_years_of_study
+	rename COD_SEXO 			head_sex
+	rename IDADE_ANOS 			head_age
+
+	
+	*We need to construct/modify some of them
+	*hhid
 	egen hhid = concat(COD_UF NUM_SEQ NUM_DV COD_DOMC NUM_UC)
 	distinct hhid					// Number of households (CONSUMPTION UNIT) : 56 091 
 	
-	# delim ; 
-	capture label drop head_relationship_values;
-	label define head_relationship_values 
-	1 "Pessoa de referência"
-	2 "Cônjuge"
-	3 "Filho"
-	4 "Outro parente"
-	5 "Agregado"
-	6 "Pensionista"
-	7 "Empregado doméstico"
-	8 "Parente do empregado doméstico";
 	
-	capture label drop sex_values;
-	label define sex_values 
-	1 "Male"
-	2 "Female";
-	
-	capture label drop edu_values;
-	label define edu_values
-0 "No schooling"
-1 "Creche"
-2 "Pré-Escolar"
-3 "Classe de Alfabetização de crianças"
-4 "Alfabetização de adultos"
-5 "Antigo Primário"
-6 "Antigo Ginásio"
-7 "Antigo Clássico, Científico, etc."
-8 "Regular do Ensino fundamental"
-9 "Educação de Jovens e Adultos ou Supletivo do Ensino Fundamental ou 1º grau"
-10 "Regular do Ensino Médio"
-11 "Educação de Jovens e Adultos ou Supletivo do Ensino Médio ou 2º grau"
-12 "Tecnológico Superior"
-13 "Pré-Vestibular"
-14 "Superior – graduação"
-15 "Especialização superior"
-16 "Mestrado ou doutorado";	
-
-	capture label drop race_values;
-	label define race_values
-1 "Branca"
-2 "Preta"
-3 "Amarela"
-4 "Parda"
-5 "Indígena"
-9 "Não Sabe";
-
-	# delim cr
-
-	* Relationship to the head of the consumption unit (household)
-	destring COD_REL_PESS_REFE_UC, replace
-	label values COD_REL_PESS_REFE_UC head_relationship_values
-	ta COD_REL_PESS_REFE_UC, missing // code 1 for head of household
-	
-	* size of the household
+	*hh_size
 	sort hhid
 	by hhid: gen _nval = _n
 	by hhid: egen hh_size = max(_nval)
 	drop _nval
 	
-	* Age
-	ta IDADE_ANOS if COD_REL_PESS_REFE_UC == 1, missing 
-	
-	* Sex
-	destring COD_SEXO, replace
-	label values COD_SEXO sex_values
-	ta COD_SEXO, missing
-	
-	* Number of years of studies
-	ta ANOS_DE_ESTUDO if COD_REL_PESS_REFE_UC == 1 , missing
-	destring ANOS_DE_ESTUDO, replace
-	replace ANOS_DE_ESTUDO = 0 if ANOS_DE_ESTUDO == 88 // 871 changes 
-	
-	* Highest education level reached
-	ta COD_NIVEL_INSTR if COD_REL_PESS_REFE_UC == 1 , missing
-	destring COD_NIVEL_INSTR, replace
-	label values COD_NIVEL_INSTR edu_values
-	ta COD_NIVEL_INSTR if COD_REL_PESS_REFE_UC == 1 , missing
-	
-	* indicates if last class was completed, too precise for our study
-	ta COD_CONCLUIU_CURSO, missing 
-	
-	* Ethnic group 
-	ta COD_COR_RACA if COD_REL_PESS_REFE_UC == 1 , missing
-	destring COD_COR_RACA, replace
-	label values COD_COR_RACA race_values
-	ta COD_COR_RACA if COD_REL_PESS_REFE_UC == 1 , missing
-
-	
-	keep if COD_REL_PESS_REFE_UC == 1
-	
-	ta NUM_EXT_RENDA, missing
-	
-	keep COD_UF NUM_SEQ NUM_DV COD_DOMC NUM_UC hhid hh_size ///
-	COD_COR_RACA COD_NIVEL_INSTR ANOS_DE_ESTUDO COD_SEXO IDADE_ANOS FATOR_EXPANSAO2
-	rename COD_COR_RACA head_ethnicity
-	rename COD_NIVEL_INSTR head_edu
-	rename ANOS_DE_ESTUDO head_years_of_study
-	rename COD_SEXO head_sex
-	rename IDADE_ANOS head_age
-	
-	save "$main/data/$country_fullname/head_covariates.dta", replace
-	
-*****************************************************************************************
-*****************************************************************************************
-* we add some information on housing 
-	
-	use "$main/data/$country_fullname/dom.dta", clear  
-	* 55 970 lines = living places
-	
-	set more off
-	* type of contract for housing
-	destring COD_COND_OCUP, replace
-	label define cod_cond_ocup_values 1 "Próprio - já pago" 2 "Próprio – ainda pagando" 3 "Cedido por empregador" ///
-	4 "Cedido de outra forma" 5 "Outra condição" 6 "Alugado"
-	label values COD_COND_OCUP cod_cond_ocup_values
-	ta COD_COND_OCUP
-	
-	
-	ta COD_UF // big regions
-	ta NUM_SEQ // 439 categories
-	ta NUM_DV // 9 categories
-	ta COD_DOMC // up to 28
-	ta NUM_EXT_RENDA // up to 51
-	
+	*urban 
+	destring NUM_EXT_RENDA, replace
 	destring COD_UF, replace
-	# delim ;
-label define COD_UF_values 
-11 "Rondônia" 12 "Acre" 13 "Amazonas" 14 "Roraima"
-15 "Pará" 16 "Amapá" 17 "Tocantins"
-21 "Maranhão" 22 "Piauí" 23 "Ceará" 24 "Rio Grande do Norte"
-25 "Paraíba" 26 "Pernambuco" 27 "Alagoas" 28 "Sergipe" 29 "Bahia" 31 "Minas Gerais"
-32 "Espírito Santo" 33 "Rio de Janeiro" 35 "São Paulo" 41 "Paraná" 42 "Santa Catarina"
-43 "Rio Grande do Sul" 50 "Mato Grosso do Sul" 51 "Mato Grosso" 52 "Goiás"
-53 "Distrito Federal";
-	# delim cr
-	label values COD_UF COD_UF_values	
-	ta COD_UF, missing label
 
-* we use the file "Estratos Geograficos POF 2008-2009" from documentation
-
-destring NUM_EXT_RENDA, replace
-gen urban = 0
-replace urban = 1 if COD_UF == 11 & NUM_EXT_RENDA < 7
-replace urban = 1 if COD_UF == 12 & NUM_EXT_RENDA < 3
-replace urban = 1 if COD_UF == 13 & NUM_EXT_RENDA < 9
-replace urban = 1 if COD_UF == 14 & NUM_EXT_RENDA < 3
-replace urban = 1 if COD_UF == 15 & NUM_EXT_RENDA < 9
-replace urban = 1 if COD_UF == 16 & NUM_EXT_RENDA < 4
-replace urban = 1 if COD_UF == 17 & NUM_EXT_RENDA < 6
-replace urban = 1 if COD_UF == 21 & NUM_EXT_RENDA < 13
-replace urban = 1 if COD_UF == 22 & NUM_EXT_RENDA < 10
-replace urban = 1 if COD_UF == 23 & NUM_EXT_RENDA < 24
-replace urban = 1 if COD_UF == 24 & NUM_EXT_RENDA < 9
-replace urban = 1 if COD_UF == 25 & NUM_EXT_RENDA < 10
-replace urban = 1 if COD_UF == 26 & NUM_EXT_RENDA < 16
-replace urban = 1 if COD_UF == 27 & NUM_EXT_RENDA < 9
-replace urban = 1 if COD_UF == 28 & NUM_EXT_RENDA < 8
-replace urban = 1 if COD_UF == 29 & NUM_EXT_RENDA < 22
-replace urban = 1 if COD_UF == 31 & NUM_EXT_RENDA < 28
-replace urban = 1 if COD_UF == 32 & NUM_EXT_RENDA < 10
-replace urban = 1 if COD_UF == 33 & NUM_EXT_RENDA < 31
-replace urban = 1 if COD_UF == 35 & NUM_EXT_RENDA < 31
-replace urban = 1 if COD_UF == 41 & NUM_EXT_RENDA < 19
-replace urban = 1 if COD_UF == 42 & NUM_EXT_RENDA < 14
-replace urban = 1 if COD_UF == 43 & NUM_EXT_RENDA < 19
-replace urban = 1 if COD_UF == 50 & NUM_EXT_RENDA < 9
-replace urban = 1 if COD_UF == 51 & NUM_EXT_RENDA < 11
-replace urban = 1 if COD_UF == 52 & NUM_EXT_RENDA < 18
-replace urban = 1 if COD_UF == 53 & NUM_EXT_RENDA < 8
+	gen urban = 0
+	replace urban = 1 if COD_UF == 11 & NUM_EXT_RENDA < 7
+	replace urban = 1 if COD_UF == 12 & NUM_EXT_RENDA < 3
+	replace urban = 1 if COD_UF == 13 & NUM_EXT_RENDA < 9
+	replace urban = 1 if COD_UF == 14 & NUM_EXT_RENDA < 3
+	replace urban = 1 if COD_UF == 15 & NUM_EXT_RENDA < 9
+	replace urban = 1 if COD_UF == 16 & NUM_EXT_RENDA < 4
+	replace urban = 1 if COD_UF == 17 & NUM_EXT_RENDA < 6
+	replace urban = 1 if COD_UF == 21 & NUM_EXT_RENDA < 13
+	replace urban = 1 if COD_UF == 22 & NUM_EXT_RENDA < 10
+	replace urban = 1 if COD_UF == 23 & NUM_EXT_RENDA < 24
+	replace urban = 1 if COD_UF == 24 & NUM_EXT_RENDA < 9
+	replace urban = 1 if COD_UF == 25 & NUM_EXT_RENDA < 10
+	replace urban = 1 if COD_UF == 26 & NUM_EXT_RENDA < 16
+	replace urban = 1 if COD_UF == 27 & NUM_EXT_RENDA < 9
+	replace urban = 1 if COD_UF == 28 & NUM_EXT_RENDA < 8
+	replace urban = 1 if COD_UF == 29 & NUM_EXT_RENDA < 22
+	replace urban = 1 if COD_UF == 31 & NUM_EXT_RENDA < 28
+	replace urban = 1 if COD_UF == 32 & NUM_EXT_RENDA < 10
+	replace urban = 1 if COD_UF == 33 & NUM_EXT_RENDA < 31
+	replace urban = 1 if COD_UF == 35 & NUM_EXT_RENDA < 31
+	replace urban = 1 if COD_UF == 41 & NUM_EXT_RENDA < 19
+	replace urban = 1 if COD_UF == 42 & NUM_EXT_RENDA < 14
+	replace urban = 1 if COD_UF == 43 & NUM_EXT_RENDA < 19
+	replace urban = 1 if COD_UF == 50 & NUM_EXT_RENDA < 9
+	replace urban = 1 if COD_UF == 51 & NUM_EXT_RENDA < 11
+	replace urban = 1 if COD_UF == 52 & NUM_EXT_RENDA < 18
+	replace urban = 1 if COD_UF == 53 & NUM_EXT_RENDA < 8
 	
-ta urban, missing	
-/*
-      urban |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          0 |     13,022       23.27       23.27
-          1 |     42,948       76.73      100.00
-------------+-----------------------------------
-      Total |     55,970      100.00
-*/
+	*geo_loc
+	gen geo_loc=COD_UF 	
 	
-tostring COD_UF, gen(UF_str)	
-rename COD_UF UF_label
-rename UF_str COD_UF
-
-	ta QTD_FAMILIA // up to 6
-	ta QTD_UC // up to 4
-	ta QTD_FAMILIA QTD_UC
-	
-	ta QTD_MORADOR_DOMC // up to 20 people per "domicilio"
-
-	keep COD_UF NUM_SEQ NUM_DV COD_DOMC COD_COND_OCUP urban UF_label NUM_EXT_RENDA
-		
-	merge 1:m COD_UF NUM_SEQ NUM_DV COD_DOMC ///
-	using "$main/data/$country_fullname/head_covariates.dta"
-	drop _merge
-	
-	save "$main/data/$country_fullname/household_covariates.dta", replace
-	
-	
-	
-	set more off
-	use "$main/data/$country_fullname/household_covariates.dta", clear
-	
-	 
-	
-	*We select the necessary variables and use the same names for all countries :
-	*hhid hh_weight geo_loc geo_loc_min (sometimes others geographic variables when available) urban head_sex head_age head_edu hh_size exp_agg_tot inc_agg_tot
-	*Sometimes rent information is in the HH dataset: house_owner, house_rent, house_est_rent, house_pay ...	
- 	
-	rename UF_label 							geo_loc 
-
-	
-
-	*We need to construct/modify some of them
 	*geo_loc_min
 	gen x = "XX"
 	tostring NUM_EXT_RENDA, replace
@@ -315,22 +156,22 @@ rename UF_str COD_UF
 	ta head_sex, missing
 	label define head_sex_lab 1 "Male" 2 "Female"
 	label values head_sex head_sex_lab
-	
-	ta urban
+
 	ta urban, nol
-	replace urban = 0 if urban == 2
 	label define urban_lab 0 "Rural" 1 "Urban"
 	label values urban urban_lab
 	
 	
-	
 	*We keep only one line by household and necessary covariates 
- 	duplicates drop hhid , force 
- 
-	keep hhid hh_weight head_sex head_age head_edu hh_size urban geo_loc geo_loc_min census_block 
+	destring COD_REL_PESS_REFE_UC, force replace
+	keep if COD_REL_PESS_REFE_UC == 1
+	duplicates drop hhid , force 
+
 	destring hhid, replace
 	order hhid, first 
 	sort hhid
+	
+	keep hhid hh_weight urban geo_loc geo_loc_min census_block  head_sex head_age head_edu   hh_size  head_ethnicity 
 	save "$main/waste/$country_fullname/${country_code}_household_cov_original.dta" , replace
 	
 
