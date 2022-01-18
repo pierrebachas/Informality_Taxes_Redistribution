@@ -8,12 +8,12 @@ This repository contains three folders:
 Do files - Paper: These files allow for a full replication of the paper once each country's expenditure survey data has been obtained.
 The **master.do** file details which do file correspond to which graph or table. This file also contains excel files necessary to run the dofiles.
 Do files - Country Codes : These files allow to replicate the analysis we conducted for each country starting from the raw household survey data. The same methodology is used for each country, with a few exceptions listed and detailed below.
-Crosswalk : These files are needed for the analysis of some countries, whose product codes where not following the COICOP classification and/or when the type of retailers classification was too detailed. This folder contains also the crosswalks between the COICOP codes and their labels.
+Crosswalk : These files are needed for the analysis of some countries, whose product codes were not following the COICOP classification and/or when the type of retailers classification was too detailed. This folder contains also the crosswalks between the COICOP codes and their labels.
 
 -----------------------------------------------------------------------------------------------------
 Notes on the Data
 
-The data comes from nationally representative income and expenditure surveys from 31 countries. 
+The data comes from nationally representative income and expenditure surveys from 32 countries. 
 Some of these micro-data are open access and can be obtained from the statistical agency of each countries, and others are restricted access. We list below the country names, survey acronyms and years for anyone interested in replicating our analysis. 
 
 |Country name  |Survey        |Year |Source          | 
